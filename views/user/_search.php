@@ -15,23 +15,15 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'health_id') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'username') ?>
 
-    <?= $form->field($model, 'sex') ?>
+    <?= $form->field($model, 'password') ?>
 
-    <?= $form->field($model, 'age') ?>
+    <?= $form->field($model, 'authKey') ?>
 
-    <?= $form->field($model, 'work') ?>
-
-    <?php // echo $form->field($model, 'height') ?>
-
-    <?php // echo $form->field($model, 'weight') ?>
-
-    <?php // echo $form->field($model, 'pressure') ?>
-
-    <?php // echo $form->field($model, 'creat_time') ?>
+    <?= $form->field($model, 'accessToken') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

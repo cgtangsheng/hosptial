@@ -12,19 +12,13 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sex')->textInput() ?>
+    <?= $form->field($model, 'password')->passwordInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'age')->textInput() ?>
+    <?= $form->field($model, 'authKey')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'work')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'height')->textInput() ?>
-
-    <?= $form->field($model, 'weight')->textInput() ?>
-
-    <?= $form->field($model, 'pressure')->textInput() ?>
+    <?= $form->field($model, 'accessToken')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
