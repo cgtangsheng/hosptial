@@ -13,13 +13,13 @@ use Yii;
  * @property string $authKey
  * @property string $accessToken
  */
-class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web\IdentityInterface
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
+//    public $id;
+//    public $username;
+//    public $password;
+//    public $authKey;
+//    public $accessToken;
 
     /**
      * @inheritdoc
@@ -36,7 +36,7 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
     {
         return [
             [['username', 'password'], 'required'],
-            [['username'], 'string', 'max' => 50],
+            [['id','username'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 32],
             [['authKey', 'accessToken'], 'string', 'max' => 100],
         ];
@@ -141,4 +141,5 @@ class User extends /*\yii\base\Object*/ \yii\db\ActiveRecord implements \yii\web
     {
         return $this->password === $password;
     }
+
 }

@@ -64,7 +64,9 @@ class RecordController extends Controller
     public function actionCreate()
     {
         $model = new Record();
-
+        if(Yii::$app->user->getIdentity()->getId()!="1000000001"){
+            $model->health_id = Yii::$app->user->getIdentity()->getId();
+        }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -121,4 +123,5 @@ class RecordController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }

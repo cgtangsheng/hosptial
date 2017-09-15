@@ -24,6 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'health_id',
+            [
+                'attribute'=>'name',
+                'value'=>function($data){
+                    return $data->getName($data->health_id);
+                }
+            ],
             'examined_hospital',
             'diagnosis',
             'diagnosis_hospital',

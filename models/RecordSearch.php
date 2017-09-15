@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use app\models\Record;
+use app\models\UserInfo;
 
 /**
  * RecordSearch represents the model behind the search form about `app\models\Record`.

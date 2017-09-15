@@ -57,4 +57,8 @@ class UserInfo extends \yii\db\ActiveRecord
             'creat_time' => '录入时间',
         ];
     }
+
+    public function getUserInfo($health_id){
+        return UserInfo::find()->where(['health_id'=>$health_id])->one();
+    }
 }

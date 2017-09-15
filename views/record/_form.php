@@ -12,6 +12,9 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+<!--    --><?php //if(Yii::$app->user->getIdentity()->getId() != "1000000001"):?>
+        <?= $form->field($model, 'health_id')->textInput(['maxlength' => true]) ?>
+<!--    --><?// endif; ?>
     <?= $form->field($model, 'examined_hospital')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'diagnosis')->textInput(['maxlength' => true]) ?>

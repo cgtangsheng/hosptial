@@ -19,6 +19,9 @@ use Yii;
  */
 class Record extends \yii\db\ActiveRecord
 {
+
+    public $name = null;
+
     /**
      * @inheritdoc
      */
@@ -58,5 +61,15 @@ class Record extends \yii\db\ActiveRecord
             'medication_hospital' => '用药医院',
             'creat_time' => '就诊时间',
         ];
+    }
+
+    public function getName($health_id){
+        $model = new UserInfo();
+        if($health_id==null){
+            $userInfo = $model->getUserInfo($this->health_id);
+        }else{
+            $userInfo = $model->getUserInfo($health_id);
+        }
+        return $userInfo->name;
     }
 }
