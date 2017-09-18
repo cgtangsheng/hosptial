@@ -36,6 +36,9 @@ class RecordController extends Controller
     public function actionIndex()
     {
         $searchModel = new RecordSearch();
+        if(Yii::$app->user->getIdentity()->getId()!="1000000001"){
+            $searchModel->health_id = Yii::$app->user->getIdentity()->getId();
+        }
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
