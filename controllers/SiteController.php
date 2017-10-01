@@ -16,6 +16,9 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
+
+    public $layout = 'main_frame';
+
     public function behaviors()
     {
         return [
@@ -62,6 +65,11 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+        if (\Yii::$app->user->isGuest) {
+            $this->redirect('site/login');
+        }
+
+        $this->layout = 'main_nifty';
         return $this->render('index');
     }
 

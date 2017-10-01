@@ -17,6 +17,9 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
+
+    public $layout = 'main_frame';
+
     public function behaviors()
     {
         return [
@@ -36,11 +39,16 @@ class UserController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserSearch();
+        if(Yii::$app->user->isGuest){
+            $this->redirect('/site/login',301);
+            return;
+        }
+        $data = $searchModel->getUserInfo(Yii::$app->user->identity->getId());
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'data'=>$data
         ]);
     }
 

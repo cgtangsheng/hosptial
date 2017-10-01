@@ -59,7 +59,7 @@ class UserInfoSearch extends UserInfo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'health_id' => $this->health_id,
+            'health_id' => Yii::$app->user->getIdentity()->getId(),
             'sex' => $this->sex,
             'age' => $this->age,
             'height' => $this->height,

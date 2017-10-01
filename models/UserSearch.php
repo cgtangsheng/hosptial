@@ -69,4 +69,23 @@ class UserSearch extends User
 
         return $dataProvider;
     }
+
+    public function getUserInfo($id){
+        $result = array();
+        $sql = "select * from user left join user_info on user.id = user_info.health_id where id = :id";
+        $res = Yii::$app->db->createCommand($sql)->bindParam(":id",$id)->queryOne();
+        if($res==false){
+             $result["user"]=array();
+        }else{
+            $result["user"]=$res;
+        }
+        $sql = "select * from record where health_id=:id";
+        $res = Yii::$app->db->createCommand($sql)->bindParam(":id",$id)->queryAll();
+        if($res==false){
+            $result["record"]=array();
+        }else{
+            $result["record"]=$res;
+        }
+        return $result;
+    }
 }

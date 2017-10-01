@@ -37,9 +37,10 @@ class RecordController extends Controller
     {
         $searchModel = new RecordSearch();
         if(Yii::$app->user->getIdentity()->getId()!="1000000001"){
-            $searchModel->health_id = Yii::$app->user->getIdentity()->getId();
+                $searchModel->health_id = Yii::$app->user->getIdentity()->getId();
+                $request["RecordSearch"]["health_id"]=Yii::$app->user->getIdentity()->getId();
         }
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search($request);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -67,7 +68,7 @@ class RecordController extends Controller
     public function actionCreate()
     {
         $model = new Record();
-        if(Yii::$app->user->getIdentity()->getId()!="1000000001"){
+        if(Yii::$app->user->getIdentity()->getId()!=1000000001){
             $model->health_id = Yii::$app->user->getIdentity()->getId();
         }
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -125,6 +126,15 @@ class RecordController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    public function actionList($id){
+        $request = Yii::$app->request->queryParams;
+        $id = $request["id"];
+        $sql = "select health_id from record where health_id = :id";
+        $res = Yii::$app->db->createCommand($sql)
+            ->bindParam(":id",$id)->queryAll();
+        echo json_encode($res,true);
     }
 
 }

@@ -36,7 +36,11 @@ class UserInfoController extends Controller
     public function actionIndex()
     {
         $searchModel = new UserInfoSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $request = Yii::$app->request->queryParams;
+        if(Yii::$app->user->getIdentity()->getId()!="1000000001"){
+            $request["health_id"]=Yii::$app->user->getIdentity()->getId();
+        }
+        $dataProvider = $searchModel->search($request);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
