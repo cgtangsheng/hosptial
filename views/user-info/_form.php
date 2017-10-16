@@ -16,17 +16,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'sex')->textInput() ?>
+    <?= $form->field($model, 'sex')->dropDownList([0=>"男",1=>"女"]) ?>
 
     <?= $form->field($model, 'age')->textInput() ?>
+
+    <?= $form->field($model, 'identify')->textInput() ?>
+
+    <?= $form->field($model, 'tel')->textInput() ?>
 
     <?= $form->field($model, 'work')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'height')->textInput() ?>
 
     <?= $form->field($model, 'weight')->textInput() ?>
-
-    <?= $form->field($model, 'pressure')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'creat_time')->textInput() ?>
 

@@ -35,8 +35,7 @@ class UserInfo extends \yii\db\ActiveRecord
         return [
             [['sex', 'age', 'height', 'weight'], 'integer'],
             [['creat_time'], 'safe'],
-            [['name', 'work'], 'string', 'max' => 30],
-            [['pressure'], 'string', 'max' => 10],
+            [['name', 'work','identify','tel'], 'string', 'max' => 30],
         ];
     }
 
@@ -53,8 +52,9 @@ class UserInfo extends \yii\db\ActiveRecord
             'work' => '职业',
             'height' => '身高',
             'weight' => '体重',
-            'pressure' => '血压',
             'creat_time' => '录入时间',
+            'identify'=>'身份证号',
+            'tel'=>'电话',
         ];
     }
 

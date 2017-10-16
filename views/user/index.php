@@ -8,7 +8,7 @@ use app\assets\CleverTabAsset;
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
-AppAsset::register($this);
+\app\assets\NiftyAsset::register($this);
 CleverTabAsset::register($this);
 $this->title = '基本信息';
 $this->params['breadcrumbs'][] = $this->title;
@@ -20,43 +20,24 @@ $this->params['breadcrumbs'][] = $this->title;
             display: inline-block;
             width: 200px;
         }
+        #update-info{
+            color:blue;
+            vertical-align: top;
+            padding-top: 10px;
+            padding-left: 20px;
+        }
     </style>
-    <!--Open Sans Font [ OPTIONAL ] -->
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
-
-
-    <!--Bootstrap Stylesheet [ REQUIRED ]-->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!--Nifty Stylesheet [ REQUIRED ]-->
-    <link href="/css/nifty.min.css" rel="stylesheet">
-
-
-
-    <!--Bootstrap Table [ OPTIONAL ]-->
-    <link href="/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
-
-
-    <!--X-editable [ OPTIONAL ]-->
-    <link href="/plugins/x-editable/css/bootstrap-editable.css" rel="stylesheet">
-
-
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="/css/demo/nifty-demo.min.css" rel="stylesheet">
 </head>
 
 
 <div class="user-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
     <div id="page-content">
         <div class="panel">
             <div class="panel-body">
                 <div class="row">
                     <div class="col-lg-8">
-
                         <div class="panel">
+                            <div id="health_id" style="display:none"><?php echo Yii::$app->user->identity->getId();?></div>>
                             <div class="panel-body">
                                 <div class="inline-div">
                                     <img src="/img/av1.png" class="panel-media-img img-circle img-border-light" style="top:30px;" alt="Profile Picture">
@@ -90,6 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="inline-div" id = update-info>
+                                    <a style="color:blue;" href="/user-info/update?id=<?php echo Yii::$app->user->identity->getId();?>">[修改信息]</a>
                                 </div>
                             </div>
                             <div class="panel">
@@ -155,7 +139,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 success: function (result) {
                     $('#editable').bootstrapTable({
                         idField: 'health_id',
-                        url: '[{"health_id":"1000000003"},{"health_id":"1000000003"}]',
+                        url: '[{"health_id":"1000000003"},{"health_id":"1000000002"}]',
                         columns: [{
                             field: 'health_id',
                             title: 'health_id'

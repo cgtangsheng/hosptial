@@ -35,7 +35,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'work',
             'height',
             'weight',
-            'pressure',
+            'identify',
+            'tel',
             'creat_time',
         ],
     ]) ?>

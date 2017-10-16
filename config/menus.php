@@ -12,9 +12,9 @@ return [
                 'icon' => 'check',
                 'url' =>''
             ],
-            '健康跟踪' => [
+            '健康自测' => [
                 'icon' => 'check',
-                'url' =>''
+                'url' =>'/check-record/index'
             ],
 
         ],

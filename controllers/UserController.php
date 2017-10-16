@@ -18,7 +18,7 @@ class UserController extends Controller
      * @inheritdoc
      */
 
-    public $layout = 'main_frame';
+    public $layout = 'new_layout';
 
     public function behaviors()
     {

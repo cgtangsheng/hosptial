@@ -19,7 +19,7 @@ class UserInfoSearch extends UserInfo
     {
         return [
             [['health_id', 'sex', 'age', 'height', 'weight'], 'integer'],
-            [['name', 'work', 'pressure', 'creat_time'], 'safe'],
+            [['name', 'work', 'identify','tel', 'creat_time'], 'safe'],
         ];
     }
 
@@ -68,8 +68,7 @@ class UserInfoSearch extends UserInfo
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'work', $this->work])
-            ->andFilterWhere(['like', 'pressure', $this->pressure]);
+            ->andFilterWhere(['like', 'work', $this->work]);
 
         return $dataProvider;
     }

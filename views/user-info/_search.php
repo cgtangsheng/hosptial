@@ -29,7 +29,8 @@ use yii\widgets\ActiveForm;
 
     <?php  echo $form->field($model, 'weight') ?>
 
-    <?php  echo $form->field($model, 'pressure') ?>
+    <?php  echo $form->field($model, 'identify') ?>
+    <?php  echo $form->field($model, 'tel') ?>
 
     <?php  echo $form->field($model, 'creat_time') ?>
 

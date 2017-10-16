@@ -9,7 +9,7 @@ use app\assets\FrameAsset;
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-FrameAsset::register($this);
+\app\assets\FrameAsset::register($this);
 $user = \Yii::$app->user->identity;
 ?>
 

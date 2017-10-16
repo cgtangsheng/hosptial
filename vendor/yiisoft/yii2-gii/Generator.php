@@ -379,7 +379,7 @@ abstract class Generator extends Model
             if ($path === false) {
                 $this->addError($attribute, "The class namespace is invalid: $ns");
             } elseif (!is_dir($path)) {
-                $this->addError($attribute, "Please make sure the directory containing this class exists: $path");
+               // $this->addError($attribute, "Please make sure the directory containing this class exists: $path");
             }
         }
     }
