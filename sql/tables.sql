@@ -49,5 +49,6 @@ CREATE TABLE `check_record`(
   `hip`  smallint(8) NOT NULL DEFAULT 0 COMMENT '臀围',
   `diet` varchar(30) NOT NULL DEFAULT 0 COMMENT '饮食',
   `motion` VARCHAR(30) NOT NULL DEFAULT 0 COMMENT '运动',
+   `creat_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `idx_health_id` (`health_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;

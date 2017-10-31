@@ -26,6 +26,13 @@ $this->params['breadcrumbs'][] = $this->title;
             padding-top: 10px;
             padding-left: 20px;
         }
+        .panel-body th{
+            width:120px;
+            text-align: center;
+        }
+        td{
+            text-align: center;
+        }
     </style>
 </head>
 
@@ -118,8 +125,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     </table>
                                 </div>
                             </div>
-                        <!--===================================================-->
                     </div>
+                </div>
                 </div>
             </div>
         </div>

@@ -68,11 +68,20 @@ return [
     '权限管理' => [
         'icon' => 'wrench',
         'menus' => [
-            '用户管理' => [
+            '用户权限' => [
                 'icon' => 'th-large',
                 'url' => '',
             ],
-            '医生管理'=>[
+            '医生权限'=>[
+                'icon' => 'th-large',
+                'url' => '',
+            ],
+        ],
+    ],
+    '其他板块' => [
+        'icon' => 'wrench',
+        'menus' => [
+            '医患论坛' => [
                 'icon' => 'th-large',
                 'url' => '',
             ],

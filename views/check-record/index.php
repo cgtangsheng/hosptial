@@ -95,7 +95,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     'data-toggle' => 'modal',
                                     'class'=>'view-check-btn'
                                 ]) ?>
-                                <?= Html::a('<span class="btn btn-purple btn-lg">提交</span>', '/check-record/create', [
+                                <?= Html::a('<span class="btn btn-purple btn-lg">提交</span>',"#" , [
                                     'data-pjax' => '0',
                                     'data-target' => '#demo-lg-modal-submit',
                                     'data-toggle' => 'modal',
