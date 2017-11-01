@@ -16,7 +16,7 @@
     <!-- 自适应样式单 -->
     <link rel="stylesheet" href="/css/client/css/adaptive.css">
     <!-- 加载前动画样式 -->
-    <link rel="stylesheet" href="/css/client/css/loadiPng.css">
+    <link rel="stylesheet" href="/css/client/css/loading.css">
     <link rel="stylesheet" href="/css/client/css/index.css">
     <!-- 移动端滑动&轮播框架 -->
     <script src="/js/ready.js"></script>
@@ -28,7 +28,24 @@
         });
     </script>
     <style type="text/css">
+        .nav-header{
+            /*background: url("/img/client/banner-3.jpeg") no-repeat;*/
+            background-color: #00dd1c;
+            width: 100%;
+            height: 30%;
+            margin-bottom: 10px;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            text-align: center;
 
+        }
+        .nav-avatar{
+            width: 80%;
+        }
     </style>
 </head>
 <body>
@@ -80,48 +97,52 @@
         </div>
     </div>
     <!-- header end -->
-
     <!-- banner start -->
-    <div id="slider" class="slider card card-nomb" style="visibility: visiable;">
-        <div class="swipe-wrap">
-            <div data-log="A0-http://s1.mi.com/m/product/hmnote2/index.html" data-index="0">
-                <div data-href="http://s1.mi.com/m/product/hmnote2/index.html">
-                    <span class="imgurl"><img src="/img/client/banner-1.jpeg"></span>
-                </div>
-            </div>
-
-            <div data-log="A1-http://a.hd.mi.com/productv2/book/a/51/m/1/s/miwater" data-index="1">
-                <div data-href="http://a.hd.mi.com/productv2/book/a/51/m/1/s/miwater">
-                    <span class="imgurl"><img src="/img/client/banner-2.jpeg"></span>
-                </div>
-            </div>
-        </div>
-
-        <div class="swipe-nav" id="bottomNav">
-            <span class="on">&nbsp;</span>
-            <span class="">&nbsp;</span>
+    <div class="nav-wrap nav-header">
+        <div class="nav-avatar">
+            <img src="/img/avater.png" width="20%" height="50%" >
         </div>
     </div>
     <!-- banner end -->
-
     <!-- menu start -->
     <div class="nav-wrap nav-index">
-        <div id="slider_nav" class="swipe" style="visibility: visiable;">
+        <div id="slider_nav" class="swipe-new">
             <div class="swipe-wrap">
 
-                <div data-index="0">
+                <div>
                     <ul>
-                        <li><a href="category.html" data-log="B0-#/product/category" data-stat-id="2c1ee89f7411236e"><span class="icon icon-quanbushangpin"></span><span class="t"><span>资讯</span></span></a></li>
-                        <li><a href="/search/index" data-log="B1-#/search" data-stat-id="4be0bd1e89e75509" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-4be0bd1e89e75509', '#/search', 'pcpid']);"><span class="icon icon-sousuo"></span><span class="t"><span>搜索</span></span></a></li>
-                        <li><a href="http://m.xiaomi.cn/" data-log="B2-http://m.xiaomi.cn/" data-stat-id="edfd3e1d45a48ac3" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-edfd3e1d45a48ac3', 'http://m.xiaomi.cn/', 'pcpid']);"><span class="icon icon-shequ"></span><span class="t"><span>社区</span></span></a></li>
+                        <li>
+                            <a href="category.html" data-log="B0-#/product/category" data-stat-id="2c1ee89f7411236e"><span class="icon icon-quanbushangpin"></span><span class="t"><span>资讯</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/search/index" data-log="B1-#/search" data-stat-id="4be0bd1e89e75509" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-4be0bd1e89e75509', '#/search', 'pcpid']);">
+                                <span class="icon icon-sousuo">
+                                </span><span class="t">
+                                    <span>搜索</span></span>
+                            </a>
+                        </li>
+                        <li><a href="http://127.0.0.1:8001/" data-log="B2-http://m.xiaomi.cn/" data-stat-id="edfd3e1d45a48ac3" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-edfd3e1d45a48ac3', 'http://m.xiaomi.cn/', 'pcpid']);"><span class="icon icon-shequ"></span><span class="t"><span>社区</span></span></a></li>
                     </ul>
                 </div>
 
                 <div data-index="1">
                     <ul>
-                        <li><a href="#/heyue" data-log="B0-#/heyue" data-stat-id="b2173beffbc2a4b5" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-b2173beffbc2a4b5', '#/heyue', 'pcpid']);"><span class="icon icon-heyueji"></span><span class="t"><span>合约机</span></span></a></li>
-                        <li><a href="/search/index" data-log="B1-#/fcode" data-stat-id="90f2ce1fecd81997" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-90f2ce1fecd81997', '#/fcode', 'pcpid']);"><span class="icon icon-fcode"></span><span class="t"><span>F码频道</span></span></a></li>
-                        <li><a href="#/recharge/productlist" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);"><span class="icon icon-huafeichongzhi"></span><span class="t"><span>话费充值</span></span></a></li>
+                        <li><a href="/health/index" data-log="B0-#/health" data-stat-id="b2173beffbc2a4b5" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-b2173beffbc2a4b5', '#/health', 'pcpid']);">
+                                <span class="icon icon-health"><img src="/img/client/check.png" width="100%"></span>
+                                <span class="t"><span>健康自检</span></span>
+                            </a>
+                        </li>
+                        <li><a href="/search/index" data-log="B1-#/fcode" data-stat-id="90f2ce1fecd81997" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-90f2ce1fecd81997', '#/fcode', 'pcpid']);">
+                                <span class="icon icon-fcode">
+                                </span><span class="t"><span>xxxxx</span></span>
+                            </a>
+                        </li>
+                        <li><a href="http://127.0.0.1:8001" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);">
+                                <span class="icon icon-huafeichongzhi"></span>
+                                <span class="t"><span>xxxxxx</span></span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
 

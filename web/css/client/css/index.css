@@ -232,6 +232,9 @@
 .icon-huafeichongzhi:before{
 	content: "\e608";
 }
+.icon-health:before{
+	content: "\e607";
+}
 .nav-index li a.red .icon:before {
 	color: red;
 }
