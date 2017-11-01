@@ -129,7 +129,7 @@
                 <div data-index="1">
                     <ul>
                         <li><a href="/health/index" data-log="B0-#/health" data-stat-id="b2173beffbc2a4b5" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-b2173beffbc2a4b5', '#/health', 'pcpid']);">
-                                <span class="icon icon-health"><img src="/img/client/check.png" width="100%"></span>
+                                <span class="icon"><img src="/img/client/check.png" width="100%"></span>
                                 <span class="t"><span>健康自检</span></span>
                             </a>
                         </li>
