@@ -25,6 +25,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <!-- 自适应样式单 -->
     <link rel="stylesheet" href="/css/client/css/adaptive.css">
     <link rel="stylesheet" href="/css/client/css/login.css">
+    <style type="text/css">
+        .login-register{
+            margin-top: 30px;
+        }
+    </style>
+</head>
 <body class="zh_CN">
 <div class="layout">
     <div class="nl-content">
@@ -39,18 +45,18 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="nl-frame-container">
             <div class="ng-form-area show-place" id="form-area">
-                <form method="post" action="/user/login/in" id="miniLogin">
+                <form method="post" action="/site/login" id="miniLogin">
 
                     <div class="shake-area" id="shake_area" style="z-index:30;">
                         <div class="enter-area display-custom-hide" id="revalidate_user"> <p class="revalidate-user-name" id="revalidate_user_name"></p>
                         </div>
                         <div class="enter-area" id="enter_user">
-                            <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="邮箱/手机号码/酒查查帐号" name="username">
+                            <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="邮箱/手机号码/酒查查帐号" name="LoginForm[username]">
                             <i class="placeholder hide" id="message_INPUT_IDENTITY">邮箱/手机号码</i>
                             <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>
                         </div>
                         <div class="enter-area" style="z-index:20;">
-                            <input type="password" class="enter-item last-enter-item" id="miniLogin_pwd" autocomplete="off" data-rule="" placeholder="密码" name="password">
+                            <input type="password" class="enter-item last-enter-item" id="miniLogin_pwd" autocomplete="off" data-rule="" placeholder="密码" name="LoginForm[password]">
                             <i class="placeholder hide" id="message_INPUT_PASSWORD">密码</i>
                             <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>
                         </div>
@@ -87,6 +93,10 @@ $this->params['breadcrumbs'][] = $this->title;
                             <span id="custom_display_64"> <a href="https://account.xiaomi.com/pass/forgetPassword?callback=http%3A%2F%2Fm.mi.com%2Fmshopapi%2Fv1%2Fauthorize%2Fsso_callback%3Ffollowup%3Dhttp%253A%252F%252Fm.mi.com%252Findex.html%2523ac%253Daccount%2526op%253Dindex%26sign%3DYjJhY2VjZWEwZDYzOTNhNmZhOTRjYmRmMDVlN2ZlZTJhZDFhOTViOA%2C%2C&sid=mi_eshopm&_snsdefault=qq" id="message_FORGET_PASSWORD" target="_blank">忘记密码？</a> </span>
                             <div class="third-area hide" id="third_area"> </div>
                         </div>
+                        <div class="login-register">
+                            <span id="custom_display_128"> <a href="/user/register" class="button" id="message_REGISTER">注册健康帐号</a> </span>
+                        </div>
+
 
                     </div>
 

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\UserInfo;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -66,11 +67,20 @@ class SiteController extends Controller
     public function actionIndex()
     {
         if (\Yii::$app->user->isGuest) {
-            $this->redirect('login');
+            $this->redirect('/site/login');
         }
 
         $this->layout = 'blank';
-        return $this->render('index');
+        $userInfoModel = new UserInfo();
+        $id = Yii::$app->user->getId();
+        $userInfo = $userInfoModel->getUserInfo($id);
+        $data = array();
+        if($userInfo == false){
+            $data["empty"]=true;
+        }
+        return $this->render('index',[
+            'model'=>$data
+        ]);
     }
 
     /**

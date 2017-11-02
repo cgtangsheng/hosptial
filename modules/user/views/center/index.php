@@ -141,8 +141,11 @@
                      </ul>
 
                     <ul>
-                        <li class="items"><a href="coupon.html" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-f0297cf5af5c4a47', 'javascript:;', 'pcpid']);_hmt.push(['_trackEvent', 'app数据', '我的账户', '优惠券'])" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
-                                <div class="un un_04">退出登录</div></a>
+                        <li class="items">
+                            <form id="_form" method="post" action="/site/logout">
+                                <input type="hidden" name="name" value="value" />
+                                <a onclick="document.getElementById('_form').submit();">点击提交</a>
+                            </form>
                         </li>
                     </ul>
                 </div>

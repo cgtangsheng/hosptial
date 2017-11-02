@@ -9,7 +9,7 @@ use yii\filters\VerbFilter;
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class HealthController extends Controller
 {
     public function behaviors()
     {

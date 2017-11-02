@@ -72,8 +72,11 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
+        $request = Yii::$app->request->post();
+        $model->username = $request["username"];
+        $model->password = $request["password"];
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -129,4 +132,20 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+
+    public function actionRegister(){
+        $this->layout="blank";
+        $model = new User();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('/user/create', [
+                'model' => $model,
+            ]);
+        }
+    }
+
+
 }

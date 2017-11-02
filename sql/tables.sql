@@ -1,3 +1,5 @@
+CREATE DATABASE hospital;
+use hospital;
 //用户基本信息表
 DROP TABLE IF EXISTS `user_info`;
 CREATE TABLE `user_info` (
