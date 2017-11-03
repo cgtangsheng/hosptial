@@ -8,6 +8,7 @@ use app\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\LoginForm;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -77,7 +78,7 @@ class UserController extends Controller
         $model->password = $request["password"];
 
         if ($model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect();
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -145,6 +146,14 @@ class UserController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    public function actionCenter() {
+        $this->layout="blank";
+        $model = new LoginForm();
+        return $this->render('center', [
+            'model' => $model,
+        ]);
     }
 
 

@@ -12,14 +12,16 @@ use app\models\LoginForm;
 use yii;
 class CenterController extends Controller {
 
-    public $layout = "/blank";
+    public $layout = "blank";
 
     public function actionIndex() {
+        echo "afasdfasd";
+        exit;
         if (!\Yii::$app->user->isGuest) {
-          //  return $this->goHome();
+            return $this->goHome();
         }
         $model = new LoginForm();
-        return $this->render('index', [
+        return $this->render('/center/index', [
             'model' => $model,
         ]);
     }

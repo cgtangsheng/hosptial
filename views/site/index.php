@@ -89,7 +89,7 @@
         <div class="right">
             <ul>
                 <li class="user">
-                    <a href="/user/center/index" title="个人中心">
+                    <a href="/user/center" title="个人中心">
                         <span class="icon icon-gerenzhongxin"></span>
                     </a>
                 </li>
