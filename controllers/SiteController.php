@@ -69,7 +69,6 @@ class SiteController extends Controller
         if (\Yii::$app->user->isGuest) {
             $this->redirect('/site/login');
         }
-
         $this->layout = 'blank';
         $userInfoModel = new UserInfo();
         $id = Yii::$app->user->getId();
