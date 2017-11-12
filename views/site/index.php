@@ -133,9 +133,9 @@
                                 <span class="t"><span>健康自检</span></span>
                             </a>
                         </li>
-                        <li><a href="/search/index" data-log="B1-#/fcode" data-stat-id="90f2ce1fecd81997" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-90f2ce1fecd81997', '#/fcode', 'pcpid']);">
+                        <li><a href="/dm/index" data-log="B1-#/fcode" data-stat-id="90f2ce1fecd81997" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-90f2ce1fecd81997', '#/fcode', 'pcpid']);">
                                 <span class="icon icon-fcode">
-                                </span><span class="t"><span>xxxxx</span></span>
+                                </span><span class="t"><span>糖尿病自检</span></span>
                             </a>
                         </li>
                         <li><a href="http://127.0.0.1:8001" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);">
