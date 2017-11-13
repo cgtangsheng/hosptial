@@ -61,6 +61,9 @@
         .btn-next{
             text-align:right;
         }
+        h3{
+            padding: 0 0px 0 0;
+        }
 
     </style>
 
@@ -112,7 +115,7 @@
                     <div class="col-lg-6">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">糖尿病自检</h3>
+                                <h3 class="panel-title">糖代谢自检</h3>
                             </div>
                             <form class="panel-body form-horizontal form-padding" method="get" action="/dm/check">
                                 <div class="form-group">
@@ -128,7 +131,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="blood-sugar-value">
+                                <div class="blood-sugar-value weakness">
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">空腹血糖</label>
                                         <div class="col-md-9">
@@ -152,9 +155,9 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="history-of-diabetes-mellitus">
+                                <div class="history-of-diabetes-mellitus weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">糖尿病病史录入</h3>
+                                        <h3 class="panel-title"">糖尿病病史录入</h3>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
@@ -337,7 +340,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="base-user-info">
+                                <div class="base-user-info weakness">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">录入基本信息</h3>
                                     </div>
@@ -390,7 +393,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="base-health-info">
+                                <div class="base-health-info weakness">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">一般健康信息</h3>
                                     </div>
@@ -426,7 +429,7 @@
                                     </div>
                                     <hr>
                                 </div>
-                                <div class="diet-and-sports">
+                                <div class="diet-and-sports weakness">
                                     <div class="panel-heading">
                                         <h3 class="panel-title">饮食与运动</h3>
                                     </div>
@@ -614,9 +617,8 @@
     $(function(){
         $("input:radio[name='is_diabetes']").change(function (){ //拨通
             var is_diabetes=$("input:radio[name='is_diabetes']:checked").val() ;
-            //var is_diabetes =  $("input:radio[name='is_diabetes']").val();
             if(is_diabetes == 0){
-                $(".blood-sugar-value").hide()
+                $(".weakness").hide();
             }else{
                 $(".blood-sugar-value").show()
             }

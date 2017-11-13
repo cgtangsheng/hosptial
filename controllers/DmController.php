@@ -24,4 +24,8 @@ class DmController extends Controller
         ]);
     }
 
+    public function actionCheck(){
+
+    }
+
 }

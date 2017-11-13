@@ -78,7 +78,7 @@ class UserController extends Controller
         $model->password = $request["password"];
 
         if ($model->save()) {
-            return $this->redirect();
+            return $this->redirect("/site/index");
         } else {
             return $this->render('create', [
                 'model' => $model,
