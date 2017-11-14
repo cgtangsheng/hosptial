@@ -54,3 +54,5 @@ CREATE TABLE `check_record`(
    `creat_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   KEY `idx_health_id` (`health_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+//糖代谢记录表

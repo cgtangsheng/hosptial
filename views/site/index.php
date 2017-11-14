@@ -138,9 +138,9 @@
                                 </span><span class="t"><span>糖尿病自检</span></span>
                             </a>
                         </li>
-                        <li><a href="http://127.0.0.1:8001" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);">
+                        <li><a href="/laboratory/index" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);">
                                 <span class="icon icon-huafeichongzhi"></span>
-                                <span class="t"><span>xxxxxx</span></span>
+                                <span class="t"><span>化验单录入</span></span>
                             </a>
                         </li>
                     </ul>
