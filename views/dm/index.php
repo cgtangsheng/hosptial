@@ -28,17 +28,16 @@
 
     <!--Demo [ DEMONSTRATION ]-->
     <link href="/css/demo/nifty-demo.min.css" rel="stylesheet">
-
-
-
-
     <!--SCRIPT-->
     <!--=================================================-->
 
     <!--Page Load Progress Bar [ OPTIONAL ]-->
     <link href="/plugins/pace/pace.min.css" rel="stylesheet">
     <script src="/plugins/pace/pace.min.js"></script>
-
+    <script src="/js/swiper-3.3.1.jquery.min.js"></script>
+    <script src="/js/Addpolicy.js"></script>
+    <link href="/css/Addpolicy.css" rel="stylesheet">
+    <link href="/css/swiper-3.3.1.min.css" rel="stylesheet">
     <style type="text/css">
         small{
             color: red;
@@ -86,6 +85,14 @@
         }
         h3{
             padding: 0 0px 0 0;
+        }
+        .panel-title{
+            float: left;
+            padding: 0px;
+        }
+        #demo-text-input{
+            margin-left: -1em;
+            margin-right: -1.2em;
         }
 
     </style>
@@ -140,16 +147,16 @@
                             <div class="panel-heading">
                                 <h3 class="panel-title">糖代谢自检</h3>
                             </div>
-                            <form class="panel-body form-horizontal form-padding" method="get" action="/dm/check">
+                            <form class="panel-body form-horizontal form-padding" method="get" action="/dm/create">
                                 <div class="form-group">
-                                    <label class="col-md-3 control-label">是否确诊微糖尿病</label>
+                                    <label class="col-md-3 control-label">是否确诊为糖尿病</label>
                                     <div class="col-md-9 radio-item">
                                         <div class="col-md-6 pad-no">
                                             <div class="radio">
                                                 <label class="form-radio form-normal active"><input type="radio" name="is_diabetes" value="1">是</label>
                                             </div>
                                             <div class="radio">
-                                                <label class="form-radio form-normal"><input type="radio" name="is_diabetes" checked="" value="0">否</label>
+                                                <label class="form-radio form-normal"><input type="radio" checked="" name="is_diabetes" value="0">否</label>
                                             </div>
                                         </div>
                                     </div>
@@ -255,7 +262,7 @@
                                         <!--Text Input-->
                                         <div class="form-group">
                                             <label class="col-md-3 control-label" for="demo-text-input">严重程度</label>
-                                            <select class="selectpicker" name="diabetes_type">
+                                            <select class="selectpicker" name="hypoglycemia_Severity">
                                                 <option value="1">没事</option>
                                                 <option value="2">一般,不严重</option>
                                                 <option value="3">严重</option>
@@ -358,7 +365,7 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">伴发疾病</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：手脚麻木,腰酸背疼" name="tel">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：手脚麻木,腰酸背疼" name="associated_diseases">
                                             <small>多种疾病用逗号分割</small>
                                         </div>
                                     </div>
@@ -440,7 +447,7 @@
                                     <!--Text Input-->
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">腰围(cm)</label>
-                                        <div class="col-md-9">
+                                        <div class="col-md-5">
                                             <input type="text" id="demo-text-input" class="form-control" placeholder="比如：120" name="waistline">
                                         </div>
                                     </div>
@@ -463,10 +470,11 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">体力劳动</label>
                                         <select class="selectpicker" name="work_density">
-                                            <option value="0">休息</option>
-                                            <option value="1">轻体力劳动</option>
-                                            <option value="2">中体力劳动</option>
-                                            <option value="3">重体力劳动</option>
+                                            <option value="0">无</option>
+                                            <option value="1">休息</option>
+                                            <option value="2">轻体力劳动</option>
+                                            <option value="3">中体力劳动</option>
+                                            <option value="4">重体力劳动</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -529,8 +537,9 @@
                                         <label class="col-md-3 control-label" for="demo-text-input">运动方式</label>
 
                                         <select class="selectpicker" name="sports_type">
-                                            <option value="0">有氧运动</option>
-                                            <option value="1">无氧运动</option>
+                                            <option value="0">无</option>
+                                            <option value="1">有氧运动</option>
+                                            <option value="2">无氧运动</option>
                                         </select>
                                         <br><small class="col-md-9">有氧运动（步行、快走、慢跑、竞走、滑冰、长距离游泳、骑自行车、打太极拳、跳健身舞、跳绳/做韵律操、球类运动如篮球、足球等等）无氧运动（短跑、举重、投掷、跳高、跳远、拔河、俯卧撑、潜水、肌力训练（长时间的肌肉收缩））</small>
                                     </div>
@@ -594,12 +603,6 @@
                                             <input type="text" id="demo-text-input" class="form-control" placeholder="3" name="drink_num">
                                         </div>
                                     </div>
-                                    <div class="form-group drink_num">
-                                        <label class="col-md-3 control-label" for="demo-text-input">饮酒量(两/日)</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="3" name="drink_num">
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">血压高压(mmHg)</label>
                                         <div class="col-md-9">
@@ -617,10 +620,10 @@
                                         <div class="col-md-9">
                                             <div class="col-md-6 pad-no">
                                                 <div class="radio">
-                                                    <label class="form-radio form-normal active"><input type="radio" name="blood_pressure_addr" value="home">家</label>
+                                                    <label class="form-radio form-normal active"><input type="radio" name="blood_pressure_addr" value="1">家</label>
                                                 </div>
                                                 <div class="radio">
-                                                    <label class="form-radio form-normal"><input type="radio" name="blood_pressure_addr" checked="" value="hospital">医院</label>
+                                                    <label class="form-radio form-normal"><input type="radio" name="blood_pressure_addr" checked="" value="2">医院</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -653,9 +656,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="demo-text-input">TC</label>
+                                        <label class="col-md-3 control-label" for="demo-text-input">TG</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="" name="tc">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="" name="tg">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -670,14 +673,9 @@
                                             <input type="text" id="demo-text-input" class="form-control" placeholder="" name="hdl_c">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class="col-md-3 control-label" for="demo-text-input">HDL-C</label>
-                                        <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="" name="hdl_c">
-                                        </div>
-                                    </div>
                                     <div class=" btn-next">
                                         <button class="btn btn-success">生成检测报告</button>
+                                        <button class="btn btn-success" onclick="/dm/create">提交</button>
                                     </div>
                                 </div>
                             </form>

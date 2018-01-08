@@ -151,46 +151,6 @@
     </div>
     <!-- menu end -->
 
-    <!-- title start -->
-    <div class="title"><span>健康小贴士</span></div>
-    <!-- title end -->
-
-    <!-- part one start -->
-    <div class="card show_big">
-        <div class="col2">
-            <div class="row2 mg-bor-right">
-                <a data-log="C0-http://s1.mi.com/m/product/mi4/index.html" class="img" href="http://s1.mi.com/m/product/mi4/index.html" data-stat-id="41ab0f5315c23fba" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-41ab0f5315c23fba', 'javascript:;', 'pcpid']);"><span class="imgurl"><img src="http://i3.mifile.cn/a4/T1FRZ_BQWT1RXrhCrK.jpg"></span></a>
-            </div>
-            <div class="rows">
-                <div class="row1">
-                    <a data-log="C1-http://s1.mi.com/m/product/mitv48/index.html" class="img" href="http://s1.mi.com/m/product/mitv48/index.html" data-stat-id="6ca6a79fc10599dd" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-6ca6a79fc10599dd', 'javascript:;', 'pcpid']);"><span class="imgurl"><img src="http://i3.mifile.cn/a4/T1hoKvB5xv1RXrhCrK.jpg"></span></a>
-                </div>
-                <div class="row1 mg-bor-no-left mg-bor-top">
-                    <a data-log="C2-http://s1.mi.com/m/product/minotetop/index.html?0804" class="img" href="http://s1.mi.com/m/product/minotetop/index.html?0804" data-stat-id="6ca6a79fc10599dd" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-6ca6a79fc10599dd', 'javascript:;', 'pcpid']);"><span class="imgurl"><img data="http://i3.mifile.cn/a4/T17lLvBXDv1RXrhCrK.jpg" src="http://i3.mifile.cn/a4/T17lLvBXDv1RXrhCrK.jpg"></span></a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- more start -->
-    <div class="col1 more">
-        <a href="/v2.html#/product/category" data-stat-id="916259ec7bf4348f" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-916259ec7bf4348f', '/v2.html#/product/category', 'pcpid']);">
-            <span>查看更多配件&nbsp;&gt;</span>
-        </a>
-    </div>
-    <!-- more end -->
-
-    <!-- footer start -->
-    <div class="footer">
-        <div class="tip">
-            <a href="http://www.mi.com/?mobile" class="goDesktop" data-stat-id="8d858a68b4b01291" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-8d858a68b4b01291', 'http://www.mi.com/', 'pcpid']);"><span>切换到电脑版</span></a>
-        </div>
-        <div class="links">
-            <a href="http://p.www.xiaomi.com/m/huodong/page/2013/0922/index.html" data-stat-id="ab305527e5d218c8" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-ab305527e5d218c8', 'http://p.www.xiaomi.com/m/huodong/page/2013/0922/index.html', 'pcpid']);"><span class="linksBtn">立即下载</span><p><strong>小米商城客户端</strong><span>与米粉交朋友</span></p></a>
-        </div>
-    </div>
-    <!-- footer end -->
-
     <script type="text/javascript">
         var bottom = document.getElementById("bottomNav").getElementsByTagName("span");
         // 轮播&滑动事件

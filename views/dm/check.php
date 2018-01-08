@@ -101,7 +101,7 @@
                                         <td><?php echo $item["label"] ?></td>
                                         <td><?php echo $item["value"] ?></td>
                                         <td><?php echo $item["standard"] ?></td>
-                                        <td><?php echo $item["desc"] ?></td>
+                                        <td style="color: red"><?php echo $item["desc"] ?></td>
                                     </tr>
                                 <?php endforeach;?>
                                 </tbody>

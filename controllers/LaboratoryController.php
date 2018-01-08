@@ -11,5 +11,14 @@ use yii\filters\VerbFilter;
  */
 class LaboratoryController extends Controller
 {
+    public $layout = "blank";
 
+    public function actionIndex(){
+        if (\Yii::$app->user->isGuest) {
+            $this->redirect('/site/login');
+        }
+
+        return $this->render('index',[
+        ]);
+    }
 }
