@@ -7,6 +7,7 @@
  */
 
 namespace app\modules\admin\controllers;
+use app\models\UserInfo;
 use yii\web\Controller;
 use yii;
 class MemberController extends Controller {
@@ -14,7 +15,9 @@ class MemberController extends Controller {
     public $layout = "/blank";
 
     public function actionIndex() {
-        return $this->render('index');
+        $sql = "select * from user_info";
+        $data = Yii::$app->db->createCommand($sql)->queryAll();
+        return $this->render('index',["data"=>$data]);
     }
 
     public function actionStatistic(){

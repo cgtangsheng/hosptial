@@ -32,8 +32,6 @@
         <div id="tab-category" class="HuiTab">
             <div class="tabBar cl">
                 <span>糖尿病</span>
-                <span>高学压</span>
-                <span>高血脂</span>
             </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-hover table-bg table-sort" id="tbl-data">
@@ -44,7 +42,6 @@
                         <th width="100">用户名</th>
                         <th width="40">性别</th>
                         <th width="90">手机</th>
-                        <th width="130">地址</th>
                         <th width="150">身份证</th>
                         <th width="130">加入时间</th>
                         <th width="70">状态</th>
@@ -52,22 +49,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php for($i=0;$i<10;$i++):?>
+                    <?php foreach($data as $key=>$value):?>
                         <tr>
                             <td style="display: none">1000000005</td>
                             <td><input type="checkbox" value="1" name=""></td>
-                            <td><?= "1000000005" ?></td>
-                            <td><?= "汤升" ?></td>
-                            <td><?= "男"?></td>
-                            <td><?= "暂无" ?></td>
-                            <td class="text-l">北京市 海淀区</td>
-                            <td><?="612322198711140613" ?></td>
-                            <td>2014-6-11 11:11:42</td>
+                            <td><?= $value["health_id"] ?></td>
+                            <td><?= $value["name"] ?></td>
+                            <td><?= $value["sex"]==1?"女":"男" ?></td>
+                            <td><?= $value["tel"] ?></td>
+                            <td><?= $value["identify"] ?></td>
+                            <td><?= $value["creat_time"]?></td>
                             <td class="td-status"><span class="label label-success radius">正常状态</span></td>
                             <td class="td-manage"><a style="text-decoration:none" onClick="member_edit(this,'1000000005')" href="javascript:;" title="编辑"><i class="Hui-iconfont">&#xe631;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
 
                         </tr>
-                    <?php endfor;?>
+                    <?php endforeach;?>
                     </tbody>
                 </table>
             </div>

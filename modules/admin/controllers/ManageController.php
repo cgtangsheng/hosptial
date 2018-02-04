@@ -7,14 +7,19 @@
  */
 
 namespace app\modules\admin\controllers;
+use app\models\UserInfo;
 use yii\web\Controller;
+use app\components\QRcode;
 use yii;
 class ManageController extends Controller {
 
     public $layout = "/blank";
+    const HOST_URL = "http://zldzbl.cn";
 
     public function actionIndex() {
-        return $this->render('index');
+        $health_id = Yii::$app->user->getId();
+        $userModel = UserInfo::findOne(["health_id"=>$health_id]);
+        return $this->render('index',["user"=>$userModel]);
     }
 
     public function actionStatistic(){
@@ -27,4 +32,12 @@ class ManageController extends Controller {
         }
         return $this->render('index');
     }
+
+    public function actionGenerateCode(){
+        $id = Yii::$app->request->get("id");
+        $url = self::HOST_URL."/user/login/in?id=".$id;
+        QRcode::png($url, false, 3, 50, 3,false);
+        exit;
+    }
+
 }

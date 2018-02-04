@@ -44,12 +44,14 @@
             </nav>
             <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                 <ul class="cl">
+                    <div id="health-id"><?=$user->health_id; ?></div>
                     <li>超级管理员</li>
                     <li class="dropDown dropDown_hover">
-                        <a href="#" class="dropDown_A">admin <i class="Hui-iconfont">&#xe6d5;</i></a>
+                        <a href="#" class="dropDown_A"><?=$user->name; ?> <i class="Hui-iconfont">&#xe6d5;</i></a>
                         <ul class="dropDown-menu menu radius box-shadow">
                             <li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
                             <li><a href="#">切换账户</a></li>
+                            <li><a href="javascript:;" onClick="generateCode()">专属二维码</a></li>
                             <li><a href="#">退出</a></li>
                         </ul>
                     </li>
@@ -208,6 +210,14 @@
             title: '查看信息',
             content: '<div>管理员信息</div>'
         });
+    }
+
+    /*生成二维码*/
+    function generateCode() {
+        id = $("#health-id").text()
+        url = "/admin/manage/generate-code?id=" + id
+        title = "专属二维码"
+        layer_show(title, url, 280, 300);
     }
 
     /*资讯-添加*/
