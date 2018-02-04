@@ -51,8 +51,8 @@
             </thead>
             <tbody>
             <?php foreach ($data as $key=>$item):?>
-                <div style="display: none"><?= $id= $item["id"]?></div>
-                <tr class="text-c" onClick="record_detail('自检详情','/admin/diabets/record-detail',1)">
+                <div style="display: none"><?= $id= $item["health_id"]?></div>
+                <tr class="text-c" onClick="record_detail('自检详情','/admin/diabets/record-detail',<?php echo $item["health_id"];?>)">
                     <td><input type="checkbox" value="1" name=""></td>
                     <td><?= $item["health_id"]?></td>
                     <td><?= $item["name"] ?></td>

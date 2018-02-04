@@ -106,3 +106,16 @@ CREATE TABLE `dm_record`(
  `hdl_c` FLOAT(5,2) DEFAULT 0.0 COMMENT 'hdl_c',
   KEY `idx_health_id` (`health_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+//糖代谢记录表
+DROP TABLE IF EXISTS `doctor`;
+CREATE TABLE `doctor` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '医生编号',
+  `name` varchar(32) NOT NULL DEFAULT "" COMMENT '医生姓名',
+  `hospital` varchar(32) NOT NULL DEFAULT "" COMMENT '所属医院',
+  `level` varchar(32) NOT NULL DEFAULT "" COMMENT '级别',
+  `tel` varchar(32) NOT NULL DEFAULT "" COMMENT '电话',
+  `wx` varchar(32) NOT NULL DEFAULT "" COMMENT '微信',
+  `identify` varchar(32) NOT NULL DEFAULT "" COMMENT '身份证号',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1000000001  DEFAULT CHARSET=utf8;

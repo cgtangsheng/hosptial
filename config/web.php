@@ -57,6 +57,9 @@ $config = [
         'admin' => [
             'class' => 'app\modules\admin\Admin',
         ],
+        'doctor' =>[
+            'class' => 'app\modules\doctor\Doctor',
+        ]
     ],
     'params' => $params,
 ];

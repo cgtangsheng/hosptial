@@ -94,8 +94,16 @@ class SiteController extends Controller
         }
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            if($model->getUser()->getId()!=false){
+                $userInfoModel = new UserInfo();
+                $userInfo = $userInfoModel->getUserInfo($model->getUser()->getId());
+                if($userInfo == false){
+                   return  $this->redirect("/user/edit");
+                }
+            }
             return $this->goBack();
         }
+
         return $this->render('login', [
             'model' => $model,
         ]);

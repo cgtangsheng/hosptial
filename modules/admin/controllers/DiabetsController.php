@@ -16,7 +16,7 @@ class DiabetsController extends Controller {
     public $layout = "/blank";
 
     public function actionMonitor() {
-        $sql = "select * from dm_record as dm left join user_info as u on dm.health_id=u.health_id";
+        $sql = "select * from user_info";
         $res = Yii::$app->db->createCommand($sql)->queryAll();
         foreach ($res as $key=>$value){
             $index = rand(0,100);
@@ -31,14 +31,6 @@ class DiabetsController extends Controller {
     public function actionSendMonitor() {
         $sql = "select * from dm_record as dm left join user_info as u on dm.health_id=u.health_id";
         $res = Yii::$app->db->createCommand($sql)->queryAll();
-        foreach ($res as $key=>$value){
-            $index = rand(0,100);
-            if($index%2 == 0){
-                $res["status"]=1;
-            }else{
-                $res["status"]=0;
-            }
-        }
         return $this->render('monitor',["data"=>$res]);
     }
     public function actionRecordDetail(){
@@ -46,7 +38,7 @@ class DiabetsController extends Controller {
         if($id == false){
             return ;
         }
-        $sql = "select * from dm_record as dm left join user_info as u on dm.health_id=u.health_id where dm.id=:id";
+        $sql = "select * from dm_record as dm left join user_info as u on dm.health_id=u.health_id order by create_time desc ";
         $res = Yii::$app->db->createCommand($sql)->bindParam(":id",$id)->queryOne();
         foreach ($res as $key=>$value){
             if($value == false){

@@ -13,7 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <!DOCTYPE html>
 <html>
 <head>
-    <title>酒查查帐号 - 登录</title>
+    <title>锦医卫 - 登录</title>
     <meta content="yes" name="apple-mobile-web-app-capable"/>
     <!-- ios系统的私有标签，它指定在web app状态下，ios设备中顶端的状态条的颜色 -->
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />

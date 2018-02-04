@@ -239,7 +239,7 @@ class DmRecord extends \yii\db\ActiveRecord
         $data = array();
         $bmi=0;
         if(isset($param["height"])&&isset($param["weight"])&&$param["height"]!=false && $param["weight"]!=false){
-            $bmi=sprintf("%0.2f",floatval($param["weight"])/floatval($param["height"])*floatval($param["height"]));
+            $bmi=sprintf("%0.2f",floatval($param["weight"])/floatval($param["height"])*100);
         }
         if($bmi<18){
             $data[]=array(
@@ -310,28 +310,29 @@ class DmRecord extends \yii\db\ActiveRecord
 
     public function checkGluCoseInfo($param){
         $data = array();
-        if(isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]>7.2){
-            $data[]=array(
-                "label"=>"空腹血糖",
-                "desc"=>"血糖偏高",
-                "value"=>$this->floatParam($param,"fasting_blood_glucose"),
-                "standard"=>"18~22.9"
-            );
-        }else if (isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]<3.9){
-            $data[]=array(
-                "label"=>"空腹血糖",
-                "desc"=>"血糖偏低",
-                "value"=>$this->floatParam($param,"fasting_blood_glucose"),
-                "standard"=>"18~22.9"
-            );
-        }
-        if(isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]>10){
-            $data[]=array(
-                "label"=>"餐后血糖",
-                "desc"=>"血糖偏高",
-                "value"=>$this->floatParam($param,"fasting_blood_glucose"),
-                "standard"=>"18~22.9"
-            );
+        if(isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]>0){
+            if($param["fasting_blood_glucose"]>7.2){
+                $data[]=array(
+                    "label"=>"空腹血糖",
+                    "desc"=>"血糖偏高",
+                    "value"=>$this->floatParam($param,"fasting_blood_glucose"),
+                    "standard"=>"18~22.9"
+                );
+            }else if (isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]<3.9){
+                $data[]=array(
+                    "label"=>"空腹血糖",
+                    "desc"=>"血糖偏低",
+                    "value"=>$this->floatParam($param,"fasting_blood_glucose"),
+                    "standard"=>"18~22.9"
+                );
+            }else if(isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]>10){
+                $data[]=array(
+                    "label"=>"餐后血糖",
+                    "desc"=>"血糖偏高",
+                    "value"=>$this->floatParam($param,"fasting_blood_glucose"),
+                    "standard"=>"18~22.9"
+                );
+            }
         }
         if(isset($param["hbalc"])&&$param["hbalc"]>7){
             $data[]=array(
@@ -373,7 +374,7 @@ class DmRecord extends \yii\db\ActiveRecord
                 "standard"=>"<=1.7"
             );
         }
-        if(isset($param["ldl_c"])&&$param["ldl_c"]<2.6){
+        if(isset($param["ldl_c"])&&$param["ldl_c"]>2.6){
             $data[]=array(
                 "label"=>"ldl_c",
                 "desc"=>"偏高",
@@ -381,7 +382,7 @@ class DmRecord extends \yii\db\ActiveRecord
                 "standard"=>"<=2.6"
             );
         }
-        if(isset($param["sports_time"])&&$param["sports_time"]<2.6){
+        if(isset($param["sports_time"])&&$param["sports_time"]<150){
             $data[]=array(
                 "label"=>"有氧运动",
                 "desc"=>"有氧运动时间太少",

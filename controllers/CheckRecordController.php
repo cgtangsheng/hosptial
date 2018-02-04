@@ -163,7 +163,7 @@ class CheckRecordController extends Controller
                 return;
             }
             $userInfo = UserInfo::getUserInfo(Yii::$app->user->identity->getId());
-            $result["BMI"] = sprintf("%.2f Kg/m2",$request["weight"]/$request["height"]/100);
+            $result["BMI"] = sprintf("%.2f Kg/m2",$request["weight"]/$request["height"]*100);
             $result["WHR"] = sprintf("%.2f",$request["waist"]/$request["hip"]/100);
             if(($request["waist"]>85 && $userInfo->getAttribute("sex")==0)|| ($request["waist"]>85 && $userInfo->getAttribute("sex")==1)){
                 $result["is_fat"] = "向心性肥胖";

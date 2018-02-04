@@ -94,6 +94,10 @@
             margin-left: -1em;
             margin-right: -1.2em;
         }
+        .dm-check{
+            text-align: center;
+            padding-top: 10px;
+        }
 
     </style>
 
@@ -145,7 +149,7 @@
                     <div class="col-lg-6">
                         <div class="panel">
                             <div class="panel-heading">
-                                <h3 class="panel-title">糖代谢自检</h3>
+                                <h3 class="dm-check" style="text-align: center;">糖代谢自检</h3>
                             </div>
                             <form class="panel-body form-horizontal form-padding" method="get" action="/dm/create">
                                 <div class="form-group">
@@ -187,7 +191,7 @@
                                 </div>
                                 <div class="history-of-diabetes-mellitus weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"">糖尿病病史录入</h3>
+                                        <h3 class="dm-check"">糖尿病病史录入</h3>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
@@ -376,13 +380,13 @@
                                 </div>
                                 <div class="base-user-info weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">录入基本信息</h3>
+                                        <h3 class="dm-check">录入基本信息</h3>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">姓名</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：汤升" name="name">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：汤升" name="name" value="<?php echo $user->name;?>">
                                         </div>
                                     </div>
                                     <!--Text Input-->
@@ -390,15 +394,15 @@
                                         <label class="col-md-3 control-label" for="demo-text-input">性别</label>
 
                                         <select class="selectpicker" name="sex">
-                                            <option value="0">男</option>
-                                            <option value="1">女</option>
+                                            <option value="0" checked="<?php echo $user->sex == 1?"checked":"";?>">男</option>
+                                            <option value="1" checked="<?php echo $user->sex == 1?"checked":"";?>">女</option>
                                         </select>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">年龄</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：30" name="age">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：30" name="age" value="<?php echo $user->age?>">
                                         </div>
                                     </div>
                                     <!--Text Input-->
@@ -410,16 +414,16 @@
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
-                                        <label class="col-md-3 control-label" for="demo-text-input">身份证号</label>
+                                        <label class="col-md-3 control-label" for="demo-text-input" >身份证号</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：612322198711140613" name="identify">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：612322198711140613" name="identify" value="<?php echo $user->identify;?>">
                                         </div>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">电话</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：15901011108" name="tel">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：15901011108" name="tel" value="<?php echo $user->tel;?>">
                                         </div>
                                     </div>
                                     <div class=" btn-next">
@@ -429,19 +433,19 @@
                                 </div>
                                 <div class="base-health-info weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">一般健康信息</h3>
+                                        <h3 class="dm-check">一般健康信息</h3>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">身高(cm)</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：172" name="height">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：172" name="height" value="<?php echo $user->height;?>">
                                         </div>
                                     </div>
                                     <!--Text Input-->
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">体重(kg)</label>
                                         <div class="col-md-9">
-                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：60" name="weight">
+                                            <input type="text" id="demo-text-input" class="form-control" placeholder="比如：60" name="weight" value="<?php echo $user->weight;?>">
                                         </div>
                                     </div>
                                     <!--Text Input-->
@@ -465,7 +469,7 @@
                                 </div>
                                 <div class="diet-and-sports weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">饮食与运动</h3>
+                                        <h3 class="dm-check">饮食与运动</h3>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">体力劳动</label>
@@ -635,7 +639,7 @@
                                 </div>
                                 <div class="other-info weakness">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title">其他检查录入</h3>
+                                        <h3 class="dm-check">其他检查录入</h3>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label" for="demo-text-input">FPG</label>
@@ -674,8 +678,7 @@
                                         </div>
                                     </div>
                                     <div class=" btn-next">
-                                        <button class="btn btn-success">生成检测报告</button>
-                                        <button class="btn btn-success" onclick="/dm/create">提交</button>
+                                       <button class="btn btn-success" onclick="/dm/create">生成检测报告</button>
                                     </div>
                                 </div>
                             </form>

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DmRecord;
+use app\models\UserInfo;
 use Yii;
 use yii\rbac\DbManager;
 use yii\web\Controller;
@@ -21,8 +22,13 @@ class DmController extends Controller
         if (\Yii::$app->user->isGuest) {
             $this->redirect('/site/login');
         }
+        $health_id = Yii::$app->user->identity->getId();
+        $model = UserInfo::findOne(["health_id"=>$health_id]);
+        if($model == NULL){
+            return $this->redirect("/user/edit");
+        }
 
-        return $this->render('index',[
+        return $this->render('index',["user"=>$model
         ]);
     }
 

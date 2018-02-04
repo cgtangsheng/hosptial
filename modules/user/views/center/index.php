@@ -11,7 +11,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <!-- 设备浏览网页时对数字不启用电话功能 -->
     <meta content="telephone=no,email=no" name="format-detection" />
-    <title>Jiuchacha - User</title>
+    <title>锦医卫－医心为你</title>
     <link rel="stylesheet" href="/css/client/css/common.css">
     <!-- 自适应样式单 -->
     <link rel="stylesheet" href="/css/client/css/adaptive.css">
@@ -69,15 +69,6 @@
         </div>
         <div class="tit" style="">
             <h3>登录</h3>
-        </div>
-        <div class="nav">
-            <ul>
-                <li class="cart">
-                    <a href="cart.html" data-stat-id="96c452cb9824c0df" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-96c452cb9824c0df', '/index.html#ac=shopping&amp;op=index', 'pcpid']);">
-                        购物车</a>
-                    <span id="ShoppingCartNum" style="display:none"></span>
-                </li>
-            </ul>
         </div>
     </div>
 </div>

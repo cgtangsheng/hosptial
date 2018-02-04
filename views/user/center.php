@@ -11,7 +11,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <!-- 设备浏览网页时对数字不启用电话功能 -->
     <meta content="telephone=no,email=no" name="format-detection" />
-    <title>Jiuchacha - User</title>
+    <title>锦医卫－医心为你</title>
     <link rel="stylesheet" href="/css/client/css/common.css">
     <!-- 自适应样式单 -->
     <link rel="stylesheet" href="/css/client/css/adaptive.css">
@@ -34,6 +34,7 @@
         }
         .nav-avatar{
             width: 80%;
+            padding-left: 10px;
         }
         #user-id{
             font-size: 20px;
@@ -55,8 +56,12 @@
             /*padding-bottom: 15px;*/
             float: right;
         }
-        .un_04{
-            color: orangered;
+        .user-center{
+            color: black;
+            padding-left: 10px;
+            font-weight: bolder;
+            font-size: larger;
+            padding-top: 10px;
         }
     </style>
 </head>
@@ -66,18 +71,6 @@
     <div id="header" class="header_03">
         <div class="back">
             <a href="/" class="arrow" data-stat-id="ee3d8ad4696c648d" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-ee3d8ad4696c648d', '/home/', 'pcpid']);">首页</a>
-        </div>
-        <div class="tit" style="">
-            <h3>登录</h3>
-        </div>
-        <div class="nav">
-            <ul>
-                <li class="cart">
-                    <a href="cart.html" data-stat-id="96c452cb9824c0df" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-96c452cb9824c0df', '/index.html#ac=shopping&amp;op=index', 'pcpid']);">
-                        购物车</a>
-                    <span id="ShoppingCartNum" style="display:none"></span>
-                </li>
-            </ul>
         </div>
     </div>
 </div>
@@ -103,40 +96,32 @@
                     <ul>
                         <li class="items">
                             <label class="left">姓 名</label>
-                            <label class="right">汤升</label>
+                            <label class="right"><?php echo $model->name;?></label>
                         </li>
                         <li class="items">
                             <label class="left">性　别</label>
-                            <label class="right">男</label>
+                            <label class="right"><?php echo $model->sex == 1?"男":"女";?></label>
                         </li>
                         <li class="items">
-                            <label class="left">出生日期（选填）</label>
-                            <label class="right">1987-11-14</label>
+                            <label class="left">出生日期</label>
+                            <label class="right"><?php echo $model->birthday;?></label>
                         </li>
                         <li class="items">
-                            <label class="left">身　高(选填)</label>
-                            <label class="right">172 cm</label>
+                            <label class="left">身　高</label>
+                            <label class="right"><?php echo $model->height."cm";?></label>
                         </li>
                         <li class="items">
-                            <label class="left">体　重(选填)</label>
-                            <label class="right">67 kg</label>
-                        </li>
-                        <li class="items">
-                            <label class="left">腰 围(选填)</label>
-                            <label class="right">100 cm</label>
-                        </li>
-                        <li class="items">
-                            <label class="left">臀 围(选填)</label>
-                            <label class="right">130 cm</label>
+                            <label class="left">体　重</label>
+                            <label class="right"><?php echo $model->weight."kg";?></label>
                         </li>
                     </ul>
 
                     <ul>
-                        <li class="items"><a href="coupon.html" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-f0297cf5af5c4a47', 'javascript:;', 'pcpid']);_hmt.push(['_trackEvent', 'app数据', '我的账户', '优惠券'])" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
-                                <div class="un un_04">修改个人信息</div></a>
+                        <li class=""><a href="/user/edit" onclick="" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
+                                <div class="user-center">修改个人信息<span style="float: right;padding-right: 25px;">></span></div></a>
                         </li>
-                        <li class="items"><a href="coupon.html" onclick="_msq.push(['trackEvent', 'e2a622d1b7caf838-f0297cf5af5c4a47', 'javascript:;', 'pcpid']);_hmt.push(['_trackEvent', 'app数据', '我的账户', '优惠券'])" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
-                                <div class="un un_04">修改密码</div></a>
+                        <li class=""><a href="/user/upate-passward" onclick="" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
+                                <div class="user-center">修改密码<span style="float: right;padding-right: 25px;">></span></div></a>
                         </li>
                     </ul>
 

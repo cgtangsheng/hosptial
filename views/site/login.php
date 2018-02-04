@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             </a>
         </div>
 
-        <h1 class="nl-login-title" id="custom_display_256"><span id="message_LOGIN_TITLE">一个帐号，即刻拥有你的健康管家！</span></h1>
+        <h1 class="nl-login-title" id="custom_display_256"><span id="message_LOGIN_TITLE">锦医卫－－医心为你！</span></h1>
         <h2 class="nl-login-title lsrp-appname display-custom-hide" id="lsrp_appName"></h2>
 
         <div class="nl-frame-container">
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="enter-area display-custom-hide" id="revalidate_user"> <p class="revalidate-user-name" id="revalidate_user_name"></p>
                         </div>
                         <div class="enter-area" id="enter_user">
-                            <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="邮箱/手机号码/酒查查帐号" name="LoginForm[username]">
+                            <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="手机号码" name="LoginForm[username]">
                             <i class="placeholder hide" id="message_INPUT_IDENTITY">邮箱/手机号码</i>
                             <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>
                         </div>

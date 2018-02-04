@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\UserInfo;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
@@ -19,7 +20,7 @@ class UserController extends Controller
      * @inheritdoc
      */
 
-    public $layout = 'new_layout';
+    public $layout = 'blank';
 
     public function behaviors()
     {
@@ -149,12 +150,41 @@ class UserController extends Controller
     }
 
     public function actionCenter() {
-        $this->layout="blank";
-        $model = new LoginForm();
+        $model = new UserInfo();
+        if(Yii::$app->user->identity->getId()==false){
+            return $this->redirect("/site/login");
+        }
+        $model = UserInfo::findOne(["health_id"=>Yii::$app->user->identity->getId()]);
         return $this->render('center', [
             'model' => $model,
         ]);
     }
 
+    public function actionEdit(){
+        $heath_id = Yii::$app->user->identity->getId();
+        $model = new UserInfo();
+        $userInfo = $model->getUserInfo($heath_id);
+        return $this->render("edit",["data"=>$userInfo]);
+    }
 
+    public function actionSave(){
+        $heath_id = Yii::$app->user->identity->getId();
+        $model = UserInfo::findOne(["health_id",$heath_id]);
+        if($model == NULL){
+            $model = new UserInfo();
+        }
+        $input = Yii::$app->request->get();
+        $model->health_id =  $heath_id;
+        $model->name = $input["name"];
+        $model->birthday = $input["birthday"];
+        $model->weight = intval($input["weight"]);
+        $model->height = intval($input["height"]);
+        $model->identify = $input["identify"];
+        $model->tel = $input["tel"];
+        if($model->save()){
+            return $this->redirect("/site/index");
+        }
+
+        return $this->render("edit",["data"=>array()]);
+    }
 }

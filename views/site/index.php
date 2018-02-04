@@ -11,7 +11,7 @@
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <!-- 设备浏览网页时对数字不启用电话功能 -->
     <meta content="telephone=no,email=no" name="format-detectPion" />
-    <title>Jiuchacha</title>
+    <title>锦医卫－医心为你</title>
     <link rel="stylesheet" href="/css/client/css/common.css">
     <!-- 自适应样式单 -->
     <link rel="stylesheet" href="/css/client/css/adaptive.css">
@@ -80,7 +80,7 @@
         <!-- 绝对定位的logo -->
         <div class="logo">
             <a href="/" title="爱多多健康管家" class="home">
-                <span>私人医生管家</span>
+                <span>锦医卫－医心为你</span>
             </a>
         </div>
         <!-- 占据高度DIV -->

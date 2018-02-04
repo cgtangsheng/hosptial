@@ -16,6 +16,8 @@ use Yii;
  * @property integer $weight
  * @property string $pressure
  * @property string $creat_time
+ * @property string $birthday
+ * @property string $identify
  */
 class UserInfo extends \yii\db\ActiveRecord
 {
@@ -35,7 +37,7 @@ class UserInfo extends \yii\db\ActiveRecord
         return [
             [['sex', 'age', 'height', 'weight'], 'integer'],
             [['creat_time'], 'safe'],
-            [['name', 'work','identify','tel'], 'string', 'max' => 30],
+            [['name', 'work','identify','tel','birthday'], 'string', 'max' => 30],
         ];
     }
 
@@ -55,6 +57,7 @@ class UserInfo extends \yii\db\ActiveRecord
             'creat_time' => '录入时间',
             'identify'=>'身份证号',
             'tel'=>'电话',
+            'birthday'=>"生日",
         ];
     }
 

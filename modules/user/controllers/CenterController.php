@@ -15,8 +15,6 @@ class CenterController extends Controller {
     public $layout = "blank";
 
     public function actionIndex() {
-        echo "afasdfasd";
-        exit;
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
