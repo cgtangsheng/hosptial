@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="enter-area" id="enter_user">
                             <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="手机号码" name="LoginForm[username]">
                             <i class="placeholder hide" id="message_INPUT_IDENTITY">邮箱/手机号码</i>
-                            <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>
+<!--                            <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>-->
                         </div>
                         <div class="enter-area" style="z-index:20;">
                             <input type="password" class="enter-item last-enter-item" id="miniLogin_pwd" autocomplete="off" data-rule="" placeholder="密码" name="LoginForm[password]">
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a style="display:none" id="redirectTwoPhraseLoginLink" href=""></a>
 
                 </form>
-                <div class="qrlogin-trigger" id="qrlogin-trigger">二维码登录</div>
+<!--                <div class="qrlogin-trigger" id="qrlogin-trigger">二维码登录</div>-->
             </div>
         </div>
 
