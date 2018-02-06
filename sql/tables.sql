@@ -17,20 +17,21 @@ CREATE TABLE `user_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 //就诊记录表
 DROP TABLE IF EXISTS `record`;
-CREATE TABLE `user_info` (
-  `health_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '健康管理好',
+ CREATE TABLE `user_info` (
+  `health_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '健康管理好',
   `name` varchar(30) NOT NULL DEFAULT '' COMMENT '姓名',
   `sex` tinyint(2) NOT NULL DEFAULT '0' COMMENT '性别,0为男性，1为女性',
   `age` smallint(5) NOT NULL DEFAULT '0' COMMENT '年龄',
   `work` varchar(30) NOT NULL DEFAULT '' COMMENT '职业',
   `height` smallint(8) NOT NULL DEFAULT '0' COMMENT '身高',
   `weight` smallint(8) NOT NULL DEFAULT '0' COMMENT '体重',
-  `identify` varchar(30) DEFAULT NULL DEFAULT '' COMMENT '身份证',
-  `tel` varchar(15) DEFAULT NULL DEFAULT '' COMMENT '电话',
   `creat_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `identify` varchar(20) NOT NULL DEFAULT '' COMMENT '身份证',
+  `tel` varchar(20) NOT NULL DEFAULT '' COMMENT '电话号码',
+  `birthday` varchar(30) NOT NULL DEFAULT '' COMMENT '生日',
   PRIMARY KEY (`health_id`),
   KEY `idx_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=1000000001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1000000010 DEFAULT CHARSET=utf8
 //用户帐号信息
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (

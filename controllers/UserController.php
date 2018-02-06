@@ -73,18 +73,33 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout="blank";
         $model = new User();
+        $id = Yii::$app->request->get("id");
         $request = Yii::$app->request->post();
-        $model->username = $request["username"];
-        $model->password = $request["password"];
-
-        if ($model->save()) {
-            return $this->redirect("/site/index");
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
+        if($request!=false){
+            $data = User::findOne(["username"=>$request["username"]]);
+            if($data == false){
+                $model->username = $request["username"];
+                $model->password = $request["password"];
+                if ($model->save()) {
+                    return $this->redirect(['/site/login', 'id' => $id]);
+                } else {
+                    return $this->render('/user/create', [
+                        'model' => $model,
+                        'error'=>false
+                    ]);
+                }
+            }else{
+                return $this->render('/user/create', [
+                    'error' => "当前手机号已经存在"
+                ]);
+            }
         }
+        return $this->render('/user/create', [
+            'model' => $model,
+            'error'=>false
+        ]);
     }
 
     /**
@@ -132,20 +147,6 @@ class UserController extends Controller
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-
-    public function actionRegister(){
-        $this->layout="blank";
-        $model = new User();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('/user/create', [
-                'model' => $model,
-            ]);
         }
     }
 

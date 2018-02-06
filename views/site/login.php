@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="third-area hide" id="third_area"> </div>
                         </div>
                         <div class="login-register">
-                            <span id="custom_display_128"> <a href="/user/register" class="button" id="message_REGISTER">注册健康帐号</a> </span>
+                            <span id="custom_display_128"> <a href="/user/create" class="button" id="message_REGISTER">注册健康帐号</a> </span>
                         </div>
 
 
