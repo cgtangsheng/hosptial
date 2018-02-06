@@ -100,7 +100,7 @@
                         </li>
                         <li class="items">
                             <label class="left">性　别</label>
-                            <label class="right"><?php echo $model->sex == 1?"男":"女";?></label>
+                            <label class="right"><?php echo $model->sex == 0?"男":"女";?></label>
                         </li>
                         <li class="items">
                             <label class="left">出生日期</label>

@@ -37,9 +37,9 @@
             </div>
             <div class="user-line">
                 <label class="left">性　别:</label>
-                <select class="selectpicker" name="diabetes_type">
-                    <option value="1" checked="<?php echo isset($data["sex"])&&$data["sex"]==1?"checked":"" ?>">男性</option>
-                    <option value="2" checked="<?php echo isset($data["sex"])&&$data["sex"]==1?"checked":"" ?>">女性</option>
+                <select class="selectpicker" name="sex">
+                    <option value="0" checked="<?php echo isset($data["sex"])&&$data["sex"]==0?"checked":"" ?>">男性</option>
+                    <option value="1" checked="<?php echo isset($data["sex"])&&$data["sex"]==1?"checked":"" ?>">女性</option>
                 </select>
             </div>
             <div class="user-line">
