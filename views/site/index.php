@@ -79,7 +79,7 @@
     <div class="header">
         <!-- 绝对定位的logo -->
         <div class="logo">
-            <a href="/" title="爱多多健康管家" class="home">
+            <a href="/" title="锦医卫－医心为你" class="home">
                 <span>锦医卫－医心为你</span>
             </a>
         </div>
