@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8575ef43-e368-448f-aaa4-d6c2fdac1719" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/Doctor.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/admin/views/manage/code.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/doctor/controllers/AccountController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/doctor/views/account/create.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/doctor/views/login/login.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/user/code.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/doctor/views/login-in.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/params.php" afterPath="$PROJECT_DIR$/config/params.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/SiteController.php" afterPath="$PROJECT_DIR$/controllers/SiteController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/controllers/UserController.php" afterPath="$PROJECT_DIR$/controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/DmRecord.php" afterPath="$PROJECT_DIR$/models/DmRecord.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/User.php" afterPath="$PROJECT_DIR$/models/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/admin/controllers/ManageController.php" afterPath="$PROJECT_DIR$/modules/admin/controllers/ManageController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/admin/views/manage/index.php" afterPath="$PROJECT_DIR$/modules/admin/views/manage/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/doctor/controllers/LoginController.php" afterPath="$PROJECT_DIR$/modules/doctor/controllers/LoginController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/yiisoft/yii2/base/Model.php" afterPath="$PROJECT_DIR$/vendor/yiisoft/yii2/base/Model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dm/check.php" afterPath="$PROJECT_DIR$/views/dm/check.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/dm/index.php" afterPath="$PROJECT_DIR$/views/dm/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/site/index.php" afterPath="$PROJECT_DIR$/views/site/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/site/login.php" afterPath="$PROJECT_DIR$/views/site/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/user/center.php" afterPath="$PROJECT_DIR$/views/user/center.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -111,7 +90,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="check.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="check.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/dm/check.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="368">
@@ -121,21 +100,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/user/create.php">
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
-              <caret line="53" column="26" lean-forward="false" selection-start-line="53" selection-start-column="26" selection-end-line="53" selection-end-column="26" />
+            <state relative-caret-position="296">
+              <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/dm/index.php">
+      <file leaf-file-name="params.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/params.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="9846">
-              <caret line="547" column="39" lean-forward="false" selection-start-line="547" selection-start-column="39" selection-end-line="547" selection-end-column="39" />
+            <state relative-caret-position="72">
+              <caret line="4" column="32" lean-forward="false" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -230,7 +209,6 @@
         <option value="$PROJECT_DIR$/modules/admin/views/manage/code.php" />
         <option value="$PROJECT_DIR$/modules/admin/views/manage/index.php" />
         <option value="$PROJECT_DIR$/modules/admin/controllers/ManageController.php" />
-        <option value="$PROJECT_DIR$/config/params.php" />
         <option value="$PROJECT_DIR$/views/dm/index.php" />
         <option value="$PROJECT_DIR$/modules/doctor/views/login/login-in.php" />
         <option value="$PROJECT_DIR$/modules/doctor/Doctor.php" />
@@ -250,6 +228,7 @@
         <option value="$PROJECT_DIR$/views/user/center.php" />
         <option value="$PROJECT_DIR$/controllers/UserController.php" />
         <option value="$PROJECT_DIR$/views/dm/check.php" />
+        <option value="$PROJECT_DIR$/config/params.php" />
       </list>
     </option>
   </component>
@@ -326,20 +305,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dm" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hosptial" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hosptial" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -530,12 +495,12 @@
       <workItem from="1517587756563" duration="33574000" />
       <workItem from="1517914455605" duration="12559000" />
       <workItem from="1518091810626" duration="1434000" />
-      <workItem from="1518106402719" duration="2267000" />
+      <workItem from="1518106402719" duration="2428000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="347833000" />
+    <option name="totallyTimeSpent" value="347994000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
@@ -756,14 +721,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/admin/controllers/DoctorController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
@@ -815,14 +772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="47" column="34" lean-forward="false" selection-start-line="47" selection-start-column="34" selection-end-line="47" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/params.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -981,6 +930,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="141" column="47" lean-forward="false" selection-start-line="141" selection-start-column="47" selection-end-line="141" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/params.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="32" lean-forward="false" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
           <folding />
         </state>
       </provider>

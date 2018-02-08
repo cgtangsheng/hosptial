@@ -2,6 +2,6 @@
 
 return [
     'adminEmail' => 'admin@example.com',
-    'hostUrl'=>"http://127.0.0.1",
+    'hostUrl'=>"http://zldzbl.cn",
     'imagePath'=>"/home/work/images",
 ];
