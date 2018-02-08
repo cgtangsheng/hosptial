@@ -118,7 +118,7 @@
 
                     <ul>
                         <li class=""><a href="/user/card" onclick="" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
-                                <div class="user-center">个人名片<span style="float: right;padding-right: 25px;">></span></div></a>
+                                <div class="user-center">分享好友<span style="float: right;padding-right: 25px;">></span></div></a>
                         </li>
                         <li class=""><a href="/user/edit" onclick="" class="userLogin lnk" data-stat-id="f0297cf5af5c4a47">
                                 <div class="user-center">修改个人信息<span style="float: right;padding-right: 25px;">></span></div></a>

@@ -193,7 +193,7 @@ class UserController extends Controller
 
     public function actionCard(){
         $id = Yii::$app->user->identity->getId();
-        $url = Yii::$app->params["hostUrl"]."/user/login/in?id=".$id;
+        $url = Yii::$app->params["hostUrl"]."/site/login/in?id=".$id;
         $filname = md5($id);
         \app\components\QRcode::png($url, Yii::$app->params["imagePath"]."/$filname.png", 3, 50, 3,false);
         $url = Yii::$app->params["hostUrl"]."/images/".$filname.".png";
