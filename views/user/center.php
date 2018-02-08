@@ -58,7 +58,7 @@
         }
         .user-center{
             color: black;
-            padding-left: 10px;
+            padding-left: 8px;
             font-weight: bolder;
             font-size: larger;
             padding-top: 10px;

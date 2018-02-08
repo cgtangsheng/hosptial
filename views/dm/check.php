@@ -114,7 +114,45 @@
                 </div>
 
     </div>
+    <div class="boxed">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="panel-title">医嘱</h3>
+            </div>
 
+            <!--Data Table-->
+            <!--===================================================-->
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="text-center">建议项</th>
+                            <th>检测频率</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>胰岛素静脉或皮下注射</td>
+                            <td>4~7次每天,或按照需要</td>
+                        </tr>
+                        <tr>
+                            <td>口服药或生活方式干预</td>
+                            <td>基础胰岛素1次/d<br>
+                                预混胰岛素1~2次/d<br>
+                                基础胰岛素+餐食胰岛素3~4次/d
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--===================================================-->
+            <!--End Data Table-->
+
+        </div>
+
+    </div>
 </div>
 <!--===================================================-->
 <!-- END OF CONTAINER -->

@@ -217,7 +217,7 @@
         id = $("#health-id").text()
         url = "/admin/manage/generate-code?id=" + id
         title = "专属二维码"
-        layer_show(title, url, 280, 300);
+        layer_show(title, url, 400, 400);
     }
 
     /*资讯-添加*/

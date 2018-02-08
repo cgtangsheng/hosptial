@@ -39,6 +39,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             [['id','username'], 'string', 'max' => 50],
             [['password'], 'string', 'max' => 32],
             [['authKey', 'accessToken'], 'string', 'max' => 100],
+            [['type'], 'integer', 'max' => 100],
         ];
     }
 
@@ -53,6 +54,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
             'password' => 'Password',
             'authKey' => 'Auth Key',
             'accessToken' => 'Access Token',
+            'type'=>'role type'
         ];
     }
 
@@ -140,6 +142,11 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     public function validatePassword($password)
     {
         return $this->password === $password;
+    }
+
+    public function getType()
+    {
+        return $this->type;
     }
 
 }

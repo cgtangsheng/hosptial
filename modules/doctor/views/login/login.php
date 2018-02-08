@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="nl-frame-container">
             <div class="ng-form-area show-place" id="form-area">
-                <form method="post" action="/site/login" id="miniLogin">
+                <form method="post" action="/doctor/login/in" id="miniLogin">
 
                     <div class="shake-area" id="shake_area" style="z-index:30;">
                         <div class="enter-area display-custom-hide" id="revalidate_user"> <p class="revalidate-user-name" id="revalidate_user_name"></p>
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="enter-area" id="enter_user">
                             <input type="text" class="enter-item first-enter-item" data-rule="(^[\w.\-]+@(?:[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*\.)+[A-Za-z]{2,6}$)|(^1\d{10}$)|(^\d{3,}$)|(^\++\d{2,}$)" id="miniLogin_username" autocomplete="off" placeholder="手机号码" name="LoginForm[username]">
                             <i class="placeholder hide" id="message_INPUT_IDENTITY">邮箱/手机号码</i>
-<!--                            <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>-->
+                            <!--                            <span class="error-tip"><em class="error-ico"></em><span class="error-msg"></span></span>-->
                         </div>
                         <div class="enter-area" style="z-index:20;">
                             <input type="password" class="enter-item last-enter-item" id="miniLogin_pwd" autocomplete="off" data-rule="" placeholder="密码" name="LoginForm[password]">
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="third-area hide" id="third_area"> </div>
                         </div>
                         <div class="login-register">
-                            <span id="custom_display_128"> <a href="/user/create" class="button" id="message_REGISTER">注册健康帐号</a> </span>
+                            <span id="custom_display_128"> <a href="/doctor/account/create" class="button" id="message_REGISTER">注册健康帐号</a> </span>
                         </div>
 
 
@@ -104,7 +104,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <a style="display:none" id="redirectTwoPhraseLoginLink" href=""></a>
 
                 </form>
-<!--                <div class="qrlogin-trigger" id="qrlogin-trigger">二维码登录</div>-->
+                <!--                <div class="qrlogin-trigger" id="qrlogin-trigger">二维码登录</div>-->
             </div>
         </div>
 

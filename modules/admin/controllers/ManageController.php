@@ -14,7 +14,8 @@ use yii;
 class ManageController extends Controller {
 
     public $layout = "/blank";
-    const HOST_URL = "http://zldzbl.cn";
+    const HOST_URL = "http://127.0.0.1";
+    const IMAG_PATH = "/home/work/images";
 
     public function actionIndex() {
         $health_id = Yii::$app->user->getId();
@@ -35,9 +36,11 @@ class ManageController extends Controller {
 
     public function actionGenerateCode(){
         $id = Yii::$app->request->get("id");
-        $url = self::HOST_URL."/user/login/in?id=".$id;
-        QRcode::png($url, false, 3, 50, 3,false);
-        exit;
+        $url =Yii::$app->params["hostUrl"]."/user/login/in?id=".$id;
+        $filname = md5($id);
+        QRcode::png($url, self::IMAG_PATH."/$filname.png", 3, 50, 3,false);
+        $url = Yii::$app->params["hostUrl"]."/images/".$filname.".png";
+        return $this->render('code',["url"=>$url]);
     }
 
 }

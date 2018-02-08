@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Doctor;
 use app\models\UserInfo;
 use Yii;
 use yii\filters\AccessControl;
@@ -72,13 +73,21 @@ class SiteController extends Controller
         $this->layout = 'blank';
         $userInfoModel = new UserInfo();
         $id = Yii::$app->user->getId();
-        $userInfo = $userInfoModel->getUserInfo($id);
-        $data = array();
+        $user = User::findOne(["id"=>$id]);
+        if($user["type"] == 0){
+            $userInfo = $userInfoModel->getUserInfo($id);
+        }else{
+            $doctorModel = new Doctor();
+            $userInfo = $doctorModel->getDoctorInfo($id);
+        }
+       $data = $userInfo;
         if($userInfo == false){
             $data["empty"]=true;
         }
         return $this->render('index',[
-            'model'=>$data
+            'model'=>$data,
+            "user"=>$user,
+            "type"=>$user["type"]
         ]);
     }
 
@@ -95,6 +104,7 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             if($model->getUser()->getId()!=false){
+                $type = $model->getUser()->getType();
                 $userInfoModel = new UserInfo();
                 $userInfo = $userInfoModel->getUserInfo($model->getUser()->getId());
                 if($userInfo == false){

@@ -56,6 +56,8 @@ use Yii;
  */
 class DmRecord extends \yii\db\ActiveRecord
 {
+    public static $advice = array();
+
     /**
      * @inheritdoc
      */
@@ -318,6 +320,7 @@ class DmRecord extends \yii\db\ActiveRecord
                     "value"=>$this->floatParam($param,"fasting_blood_glucose"),
                     "standard"=>"18~22.9"
                 );
+                self::$advice["fasting_blood_glucose"] = 1;
             }else if (isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]<3.9){
                 $data[]=array(
                     "label"=>"空腹血糖",
@@ -325,6 +328,7 @@ class DmRecord extends \yii\db\ActiveRecord
                     "value"=>$this->floatParam($param,"fasting_blood_glucose"),
                     "standard"=>"18~22.9"
                 );
+                self::$advice["fasting_blood_glucose"] = 0;
             }else if(isset($param["fasting_blood_glucose"])&&$param["fasting_blood_glucose"]>10){
                 $data[]=array(
                     "label"=>"餐后血糖",
@@ -332,13 +336,14 @@ class DmRecord extends \yii\db\ActiveRecord
                     "value"=>$this->floatParam($param,"fasting_blood_glucose"),
                     "standard"=>"18~22.9"
                 );
+                self::$advice["fasting_blood_glucose"] = 1;
             }
         }
         if(isset($param["hbalc"])&&$param["hbalc"]>7){
             $data[]=array(
-                "label"=>"餐后血糖",
-                "desc"=>"血糖偏高",
-                "value"=>$this->floatParam($param["hbalc"]),
+                "label"=>"糖化血红蛋白",
+                "desc"=>"糖化血红蛋白偏高",
+                "value"=>$this->floatParam($param,"hbalc"),
                 "standard"=>"<7.0"
             );
         }

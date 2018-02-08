@@ -98,7 +98,7 @@
     </div>
     <!-- header end -->
     <!-- banner start -->
-    <div class="nav-wrap nav-header">
+    <div class="nav-wrap nav-header" style="<?php if($user["type"]==1){echo "background-color: #00dd1c;";}else{echo "background-color: #00a0e9;";} ?>">
         <div class="nav-avatar">
             <img src="/img/avater.png" width="20%" height="50%" >
         </div>
@@ -128,14 +128,14 @@
 
                 <div data-index="1">
                     <ul>
-                        <li><a href="/health/index" data-log="B0-#/health" data-stat-id="b2173beffbc2a4b5" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-b2173beffbc2a4b5', '#/health', 'pcpid']);">
-                                <span class="icon"><img src="/img/client/check.png" width="100%"></span>
-                                <span class="t"><span>健康自检</span></span>
-                            </a>
-                        </li>
                         <li><a href="/dm/index" data-log="B1-#/fcode" data-stat-id="90f2ce1fecd81997" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-90f2ce1fecd81997', '#/fcode', 'pcpid']);">
                                 <span class="icon icon-fcode">
                                 </span><span class="t"><span>糖尿病自检</span></span>
+                            </a>
+                        </li>
+                        <li><a href="/health/index" data-log="B0-#/health" data-stat-id="b2173beffbc2a4b5" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-b2173beffbc2a4b5', '#/health', 'pcpid']);">
+                                <span class="icon"><img src="/img/client/check.png" width="100%"></span>
+                                <span class="t"><span>自检记录</span></span>
                             </a>
                         </li>
                         <li><a href="/laboratory/index" data-log="B2-#/recharge/productlist" data-stat-id="a1bc230f9e518de9" onclick="_msq.push(['trackEvent', 'c499efdd9c939a49-a1bc230f9e518de9', '#/recharge/productlist', 'pcpid']);">
