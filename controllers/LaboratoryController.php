@@ -32,8 +32,8 @@ class LaboratoryController extends Controller
         $newFileName =  md5($filename).".$fileType";
         if ($filename) {
             $ret = move_uploaded_file($_FILES["file"]["tmp_name"],
-                "/home/work/hosptial/images/" .$newFileName);
-            $url = self::HOST_URL.$newFileName;
+                "/home/work/images/" .$newFileName);
+            $url = Yii::$app->params["hostUrl"]."/".$newFileName;
             return $this->render("upload",["ret"=>$ret,"url"=>$url]);
         }
     }
