@@ -33,7 +33,7 @@ class LaboratoryController extends Controller
         if ($filename) {
             $ret = move_uploaded_file($_FILES["file"]["tmp_name"],
                 "/home/work/images/" .$newFileName);
-            $url = Yii::$app->params["hostUrl"]."/".$newFileName;
+            $url = Yii::$app->params["hostUrl"]."/images/".$newFileName;
             return $this->render("upload",["ret"=>$ret,"url"=>$url]);
         }
     }
