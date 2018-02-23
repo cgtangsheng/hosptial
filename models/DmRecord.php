@@ -19,7 +19,7 @@ use Yii;
  * @property integer $is_hypoglycemia
  * @property integer $hypoglycemia_frequency
  * @property string $hypoglycemia_reason
- * @property integer $hypoglycemia_Severity
+ * @property integer $hypoglycemia_severity
  * @property integer $is_cerebrovascular
  * @property integer $is_cardiovascular
  * @property integer $is_peripheral_vascular
@@ -28,23 +28,6 @@ use Yii;
  * @property integer $is_peripheral_neuropathy
  * @property integer $is_diabetic_foot
  * @property string $associated_diseases
- * @property integer $work_density
- * @property double $diet
- * @property double $vegetables
- * @property double $milk
- * @property integer $egg
- * @property double $meet
- * @property double $bean
- * @property double $oil
- * @property double $salt
- * @property integer $sports_type
- * @property integer $sports_intensity
- * @property integer $sports_time
- * @property integer $sports_frequency
- * @property integer $is_smoke
- * @property integer $smoke_num
- * @property integer $is_drink
- * @property integer $drink_num
  * @property integer $high_blood_pressure
  * @property integer $low_blood_pressure
  * @property integer $blood_pressure_addr
@@ -53,6 +36,8 @@ use Yii;
  * @property double $tg
  * @property double $ldl_c
  * @property double $hdl_c
+ * @property string $diagnose_time
+ * @property string $diagnose_hospital
  */
 class DmRecord extends \yii\db\ActiveRecord
 {
@@ -72,8 +57,8 @@ class DmRecord extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['health_id', 'is_diabetes', 'diabetes_type', 'is_ketoacidosis', 'ketoacidosis_frequency', 'is_hypoglycemia', 'hypoglycemia_frequency', 'hypoglycemia_Severity', 'is_cerebrovascular', 'is_cardiovascular', 'is_peripheral_vascular', 'is_nephrosis', 'is_fundus_lesions', 'is_peripheral_neuropathy', 'is_diabetic_foot', 'work_density', 'egg', 'sports_type', 'sports_intensity', 'sports_time', 'sports_frequency', 'is_smoke', 'smoke_num', 'is_drink', 'drink_num', 'high_blood_pressure', 'low_blood_pressure', 'blood_pressure_addr'], 'integer'],
-            [['fasting_blood_glucose', 'postprandial_blood_glucose', 'anytime_blood_glucose', 'diet', 'vegetables', 'milk', 'meet', 'bean', 'oil', 'salt', 'blood_sugar_2', 'hbalc', 'tg', 'ldl_c', 'hdl_c'], 'number'],
+            [['health_id', 'is_diabetes', 'diabetes_type', 'is_ketoacidosis', 'ketoacidosis_frequency', 'is_hypoglycemia', 'hypoglycemia_frequency', 'hypoglycemia_severity', 'is_cerebrovascular', 'is_cardiovascular', 'is_peripheral_vascular', 'is_nephrosis', 'is_fundus_lesions', 'is_peripheral_neuropathy', 'is_diabetic_foot', 'high_blood_pressure', 'low_blood_pressure', 'blood_pressure_addr'], 'integer'],
+            [['fasting_blood_glucose', 'postprandial_blood_glucose', 'anytime_blood_glucose','blood_sugar_2', 'hbalc', 'tg', 'ldl_c', 'hdl_c'], 'number'],
             [['ketoacidosis_reason', 'hypoglycemia_reason', 'associated_diseases'], 'string', 'max' => 255],
         ];
     }
@@ -96,7 +81,7 @@ class DmRecord extends \yii\db\ActiveRecord
             'is_hypoglycemia' => 'Is Hypoglycemia',
             'hypoglycemia_frequency' => 'Hypoglycemia Frequency',
             'hypoglycemia_reason' => 'Hypoglycemia Reason',
-            'hypoglycemia_Severity' => 'Hypoglycemia  Severity',
+            'hypoglycemia_severity' => 'Hypoglycemia  Severity',
             'is_cerebrovascular' => 'Is Cerebrovascular',
             'is_cardiovascular' => 'Is Cardiovascular',
             'is_peripheral_vascular' => 'Is Peripheral Vascular',
@@ -105,23 +90,6 @@ class DmRecord extends \yii\db\ActiveRecord
             'is_peripheral_neuropathy' => 'Is Peripheral Neuropathy',
             'is_diabetic_foot' => 'Is Diabetic Foot',
             'associated_diseases' => 'Associated Diseases',
-            'work_density' => 'Work Density',
-            'diet' => 'Diet',
-            'vegetables' => 'Vegetables',
-            'milk' => 'Milk',
-            'egg' => 'Egg',
-            'meet' => 'Meet',
-            'bean' => 'Bean',
-            'oil' => 'Oil',
-            'salt' => 'Salt',
-            'sports_type' => 'Sports Type',
-            'sports_intensity' => 'Sports Intensity',
-            'sports_time' => 'Sports Time',
-            'sports_frequency' => 'Sports Frequency',
-            'is_smoke' => 'Is Smoke',
-            'smoke_num' => 'Smoke Num',
-            'is_drink' => 'Is Drink',
-            'drink_num' => 'Drink Num',
             'high_blood_pressure' => 'High Blood Pressure',
             'low_blood_pressure' => 'Low Blood Pressure',
             'blood_pressure_addr' => 'Blood Pressure Addr',
@@ -130,6 +98,8 @@ class DmRecord extends \yii\db\ActiveRecord
             'tg' => 'Tg',
             'ldl_c' => 'Ldl C',
             'hdl_c' => 'Hdl C',
+            'diagnose_hospital'=>"Diagnose Hospital",
+            'diagnose_time'=>"Diagnose Time"
         ];
     }
 
@@ -387,14 +357,6 @@ class DmRecord extends \yii\db\ActiveRecord
                 "standard"=>"<=2.6"
             );
         }
-        if(isset($param["sports_time"])&&$param["sports_time"]<150){
-            $data[]=array(
-                "label"=>"有氧运动",
-                "desc"=>"有氧运动时间太少",
-                "value"=>$this->floatParam($param,"sports_time"),
-                "standard"=>">150分钟"
-            );
-        }
         return $data;
     }
 
@@ -411,6 +373,70 @@ class DmRecord extends \yii\db\ActiveRecord
         }else{
             return intval($data[$index]);
         }
+    }
+
+    public function getAdviceGoals(){
+        return array(
+          array(
+              "name"=>"饮食与运动",
+              "desc"=>"健康饮食和规律运动是控制糖尿病的基石",
+              "frequence"=>"每季度一次",
+              "goals"=>"低脂低升糖指数、高纤维饮食,主动有氧运动>150min/周"
+          ),
+            array(
+                "name"=>"体重指数",
+                "desc"=>"保持理想体重",
+                "frequence"=>"每年一次",
+                "goals"=>"<24kg/m2"
+            ),
+            array(
+                "name"=>"戒烟",
+                "desc"=>"减少心脑血管疾病",
+                "frequence"=>"每年一次",
+                "goals"=>"戒烟"
+            ),array(
+                "name"=>"空腹血糖",
+                "desc"=>"",
+                "frequence"=>"每次就诊,推荐自我血糖检测",
+                "goals"=>"3.9~7.2"
+            ),
+            array(
+                "name"=>"糖化血红蛋白",
+                "desc"=>"反映过去2~3个月平均血糖水平",
+                "frequence"=>"3~6个月",
+                "goals"=>"<7%"
+            ),
+            array(
+                "name"=>"血压",
+                "desc"=>"良好的血压控制,可降低心脑血管疾病,眼病,肾病的风险",
+                "frequence"=>"至少每季度一次",
+                "goals"=>"<130/80 mmHg"
+            ), array(
+                "name"=>"血脂",
+                "desc"=>"调脂可降低心脑血管疾病",
+                "frequence"=>"至少每年一次",
+                "goals"=>"HDL-C(男性>1.0,女性>1.3),TG<1.7,LDL-C(未合并冠心病者<2.6,合并冠心病者<2.07)"
+            ),
+            array(
+                "name"=>"肾病筛查",
+                "desc"=>"微量白蛋白尿、scr、血Bun检测",
+                "frequence"=>"至少每年一次",
+                "goals"=>"HDL-C(男性>1.0,女性>1.3),TG<1.7,LDL-C(未合并冠心病者<2.6,合并冠心病者<2.07)"
+            ),
+            array(
+                "name"=>"眼病筛查",
+                "desc"=>"由专科医生检查",
+                "frequence"=>"至少每年一次",
+                "goals"=>"HDL-C(男性>1.0,女性>1.3),TG<1.7,LDL-C(未合并冠心病者<2.6,合并冠心病者<2.07)"
+            ),
+            array(
+                "name"=>"足病筛查",
+                "desc"=>"评估足部神经、血管功能和鞋袜",
+                "frequence"=>"至少每年一次",
+                "goals"=>"HDL-C(男性>1.0,女性>1.3),TG<1.7,LDL-C(未合并冠心病者<2.6,合并冠心病者<2.07)"
+            ),
+
+        );
     }
 
 }

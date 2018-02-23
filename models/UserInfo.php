@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\db\ActiveRecord;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "user_info".
@@ -36,7 +38,7 @@ class UserInfo extends \yii\db\ActiveRecord
     {
         return [
             [['sex', 'age', 'height', 'weight'], 'integer'],
-            [['creat_time'], 'safe'],
+//            [['create_time'],'safe'],
             [['name', 'work','identify','tel','birthday'], 'string', 'max' => 30],
         ];
     }
@@ -54,12 +56,24 @@ class UserInfo extends \yii\db\ActiveRecord
             'work' => '职业',
             'height' => '身高',
             'weight' => '体重',
-            'creat_time' => '录入时间',
+            'create_time' => '录入时间',
             'identify'=>'身份证号',
             'tel'=>'电话',
             'birthday'=>"生日",
         ];
     }
+//    public function behaviors()
+//    {
+//        return [
+//            'timestamp' => [
+//                'class' => TimestampBehavior::className(),
+//                'attributes' => [
+//                    ActiveRecord::EVENT_BEFORE_INSERT => ['create_time'],
+//                    ActiveRecord::EVENT_BEFORE_UPDATE => 'create_time',
+//                ],
+//            ],
+//        ];
+//    }
 
     public function getUserInfo($health_id){
         return UserInfo::find()->where(['health_id'=>$health_id])->one();

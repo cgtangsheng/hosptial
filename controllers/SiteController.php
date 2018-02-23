@@ -80,7 +80,7 @@ class SiteController extends Controller
             $doctorModel = new Doctor();
             $userInfo = $doctorModel->getDoctorInfo($id);
         }
-       $data = $userInfo;
+        $data = $userInfo;
         if($userInfo == false){
             $data["empty"]=true;
         }
@@ -108,7 +108,7 @@ class SiteController extends Controller
                 $userInfoModel = new UserInfo();
                 $userInfo = $userInfoModel->getUserInfo($model->getUser()->getId());
                 if($userInfo == false){
-                   return  $this->redirect("/user/edit");
+                    return  $this->redirect("/user/edit");
                 }
             }
             return $this->goBack();

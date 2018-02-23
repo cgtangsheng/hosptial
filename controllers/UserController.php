@@ -2,201 +2,308 @@
 
 namespace app\controllers;
 
+use app\models\UserEatInfo;
 use app\models\UserInfo;
 use Yii;
-use app\models\User;
-use app\models\UserSearch;
 use yii\web\Controller;
-use yii\web\NotFoundHttpException;
+use yii\filters\AccessControl;
+use yii\web\Response;
 use yii\filters\VerbFilter;
+use app\models\User;
 use app\models\LoginForm;
+use app\components\Login;
+use app\models\UserBmi;
 
-/**
- * UserController implements the CRUD actions for User model.
- */
-class UserController extends Controller
-{
-    /**
-     * @inheritdoc
-     */
 
-    public $layout = 'blank';
-
+class UserController extends Controller{
 
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'logout' => ['post'],
                 ],
             ],
         ];
     }
 
     /**
-     * Lists all User models.
-     * @return mixed
+     * @inheritdoc
      */
-    public function actionIndex()
+    public function actions()
     {
-        $searchModel = new UserSearch();
-        if(Yii::$app->user->isGuest){
-            $this->redirect('/site/login',301);
-            return;
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+    public function actionBaseSave(){
+        $response = array();
+        header("Access-Control-Allow-Origin: *");
+
+        Yii::$app->response->statusCode = 200;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if(Login::checkLogin()){$response=array(
+            "ret"=>-1,
+            "msg"=>"need login"
+        );
+            Yii::$app->response->data = $response;
+            return ;
         }
-        $data = $searchModel->getUserInfo(Yii::$app->user->identity->getId());
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            'data'=>$data
-        ]);
-    }
-
-    /**
-     * Displays a single User model.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
-
-    /**
-     * Creates a new User model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $this->layout="blank";
-        $model = new User();
-        $id = Yii::$app->request->get("id");
-        $request = Yii::$app->request->post();
-        if($request!=false){
-            $data = User::findOne(["username"=>$request["username"]]);
-            if($data == false){
-                $model->username = $request["username"];
-                $model->password = $request["password"];
-                if ($model->save()) {
-                    return $this->redirect(['/site/login', 'id' => $id]);
-                } else {
-                    return $this->render('/user/create', [
-                        'model' => $model,
-                        'error'=>false
-                    ]);
-                }
+        $model = new UserInfo();
+        $resData = $model->getUserInfo($_REQUEST["health_id"]);
+        if($resData == false){
+            $model->health_id = strval($_REQUEST["health_id"]);
+            $model->name = strval($_REQUEST["name"]);
+            $model->work = strval($_REQUEST["work"]);
+            $model->tel = strval($_REQUEST["tel"]);
+            $model->birthday = $_REQUEST["birthday"];
+            $model->sex = intval($_REQUEST["sex"]);
+            if($model->save()){
+                $response=array(
+                    "ret"=>0,
+                    "msg"=>"update success"
+                );
+                Yii::$app->response->data = $response;
+                return ;
             }else{
-                return $this->render('/user/create', [
-                    'error' => "当前手机号已经存在"
-                ]);
+                $response=array(
+                    "ret"=>-2,
+                    "msg"=>"update fail"
+                );
+                Yii::$app->response->data = $response;
+                return ;
+            }
+        }else{
+            $sql = "update user_info set name=:name,work=:work,tel=:tel,sex=:sex,birthday=:birthday where health_id=:health_id";
+            $res = Yii::$app->db->createCommand($sql)
+                ->bindParam(":name",$_REQUEST["name"])
+                ->bindParam(":work",$_REQUEST["work"])
+                ->bindParam(":tel",$_REQUEST["tel"])
+                ->bindParam(":health_id",$_REQUEST["health_id"])
+                ->bindParam(":birthday",$_REQUEST["birthday"])
+                ->bindParam("sex",$_REQUEST["sex"])
+                ->execute();
+            $response=array(
+                "ret"=>0,
+                "msg"=>"update success"
+            );
+            Yii::$app->response->data = $response;
+            return ;
+        }
+
+
+
+    }
+
+    public function actionRegister(){
+        $request = Yii::$app->request->queryParams;
+        $model = new User();
+        $res = User::findByUsername($request["username"]);
+        if ($res == false) {
+            $model->username = $request["username"];
+            $model->password = $request["password"];
+            if($model->save()){
+                $response=array(
+                    "status"=>1,
+                );
+            }else{
+                $response=array(
+                    "status"=>0,
+                );
+            }
+        } else {
+            $response = array(
+                "status"=>1,
+            );
+        }
+
+        header("Access-Control-Allow-Origin: *");
+
+        Yii::$app->response->statusCode = 200;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $response;
+    }
+
+    public function actionLogin(){
+        $request = Yii::$app->request->queryParams;
+        $response = array();
+        if($request["username"]==false || $request["password"]==false){
+            $response = array(
+                "ret"=>-1,
+                "msg"=>"param not correct"
+            );
+        }else{
+            $res = User::findByUsername($request["username"]);
+            if($res == false){
+                $response = array(
+                    "ret"=>-2,
+                    "msg"=>"need login"
+                );
+            }else if($res["password"]!=$request["password"]){
+                $response = array(
+                    "ret"=>-3,
+                    "msg"=>"password not correct"
+                );
+            }else{
+                $model = new LoginForm();
+                $data = array("LoginForm"=>$request);
+                if ($model->load($data) && $model->login()) {
+                    $response = array(
+                        "ret"=>0,
+                        "msg"=>"login success",
+                    );
+                    $token = md5(Yii::$app->security->generateRandomString());
+                    Yii::$app->cache->set($token,$res->getId(),86400*7);
+                    $response["token"]=$token;
+                    $response["health_id"]=$res->getId();
+                }else{
+                    $response = array(
+                        "ret"=>-4,
+                        "msg"=>"login fail"
+                    );
+                }
             }
         }
-        return $this->render('/user/create', [
-            'model' => $model,
-            'error'=>false
-        ]);
+        header("Access-Control-Allow-Origin: *");
+
+        Yii::$app->response->statusCode = 200;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        Yii::$app->response->data = $response;
     }
 
-    /**
-     * Updates an existing User model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+    public function actionBmiSave(){
+        $response = array();
+        header("Access-Control-Allow-Origin: *");
+
+        Yii::$app->response->statusCode = 200;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if(Login::checkLogin()){
+            $response=array(
+                "ret"=>-1,
+                "msg"=>"need login"
+            );
+            Yii::$app->response->data = $response;
+            return ;
         }
-    }
+        $model = new UserBmi();
+        $model->health_id = $_REQUEST["health_id"];
+        $model->height = intval($_REQUEST["height"]);
+        $model->weight = floatval($_REQUEST["weight"]);
+        $model->hip = floatval($_REQUEST["hip"]);
+        $model->waist = floatval($_REQUEST["waist"]);
 
-    /**
-     * Deletes an existing User model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
-     * Finds the User model based on its primary key value.
-     * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param integer $id
-     * @return User the loaded model
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    protected function findModel($id)
-    {
-        if (($model = User::findOne($id)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
-
-    public function actionCenter() {
-        $model = new UserInfo();
-        if(Yii::$app->user->identity->getId()==false){
-            return $this->redirect("/site/login");
-        }
-        $model = UserInfo::findOne(["health_id"=>Yii::$app->user->identity->getId()]);
-
-        return $this->render('center', [
-            'model' => $model,
-        ]);
-    }
-
-    public function actionEdit(){
-        $heath_id = Yii::$app->user->identity->getId();
-        $model = new UserInfo();
-        $userInfo = $model->getUserInfo($heath_id);
-        return $this->render("edit",["data"=>$userInfo]);
-    }
-
-    public function actionSave(){
-        $heath_id = Yii::$app->user->identity->getId();
-        $model = UserInfo::findOne(["health_id",$heath_id]);
-        if($model == NULL){
-            $model = new UserInfo();
-        }
-        $input = Yii::$app->request->get();
-        $model->health_id =  $heath_id;
-        $model->name = $input["name"];
-        $model->birthday = $input["birthday"];
-        $model->weight = intval($input["weight"]);
-        $model->height = intval($input["height"]);
-        $model->identify = $input["identify"];
-        $model->tel = $input["tel"];
+        $result=$model->checkBmiInfo($_REQUEST);
+        $standardModel=$model->getBmiModel();
         if($model->save()){
-            return $this->redirect("/site/index");
+            $response=array(
+                "ret"=>0,
+                "msg"=>"update success",
+                "info"=>$result["data"],
+                "advice_text"=>$standardModel[$result["status"]]["advice_text"],
+                "advice_goals"=>$standardModel[$result["status"]]["advice_goals"],
+            );
+            Yii::$app->response->data = $response;
+            return ;
+        }else{
+            $response=array(
+                "ret"=>-2,
+                "msg"=>"update fail"
+            );
+            Yii::$app->response->data = $response;
+            return ;
+        }
+    }
+
+    public function actionEatSave(){
+        $response = array();
+        header("Access-Control-Allow-Origin: *");
+
+        Yii::$app->response->statusCode = 200;
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if(Login::checkLogin()){$response=array(
+                "ret"=>-1,
+                "msg"=>"need login"
+            );
+            Yii::$app->response->data = $response;
+            return ;
         }
 
-        return $this->render("edit",["data"=>array()]);
+        $model = new UserEatInfo();
+        $model->health_id = intval($_REQUEST["health_id"]);
+        $model->staple_food = floatval($_REQUEST["diet"]);
+        $model->work_type = intval($_REQUEST["work_type"]);
+        $model->vegetables = intval($_REQUEST["vegetables"]);
+        $model->milk = floatval($_REQUEST["milk"]);
+        $model->egg = intval($_REQUEST["egg"]);
+        $model->meet = floatval($_REQUEST["meet"]);
+        $model->bean = floatval($_REQUEST["bean"]);
+        $model->oil = floatval($_REQUEST["oil"]);
+        $model->salt = floatval($_REQUEST["salt"]);
+        $model->sports_type = intval($_REQUEST["sports_type"]);
+        $model->sports_intensity = intval($_REQUEST["sports_intensity"]);
+        $model->sports_time = intval($_REQUEST["sports_time"]);
+        $model->sports_frequency = floatval($_REQUEST["sports_frequency"]);
+        $model->is_smoke = floatval($_REQUEST["is_smoke"]);
+        $model->smoke_num = floatval($_REQUEST["smoke_num"]);
+        $model->is_drink = floatval($_REQUEST["is_drink"]);
+        $model->drink_num = floatval($_REQUEST["drink_num"]);
+        $model->high_blood_pressure = floatval($_REQUEST["high_blood_pressure"]);
+        $model->low_blood_pressure = floatval($_REQUEST["low_blood_pressure"]);
+        $model->high_blood_pressure = floatval($_REQUEST["high_blood_pressure"]);
+        $model->blood_pressure_addr = floatval($_REQUEST["blood_pressure_addr"]);
+        $dietRes = $model->checkDietInfo($_REQUEST);
+        $sportRes = $model->checkSportInfo($_REQUEST);
+
+        $advice_text = "";
+        $advice_text = "建议饮食要少油少盐,不要超过标准值.";
+
+        if($model->is_drink>0){
+            $advice_text.="糖尿病患者每日不超过1～2份标准量(一份标准量为：啤酒285 ml，清淡啤酒375ml，红酒100 ml或白酒30 ml，各含酒精约10 g).";
+        }
+        if($sportRes!=false){
+            $advice_text .= "每周3~5次中强度运动,运动心率计算公式（220-年龄）*60%～70%,可以选择快走,慢跑,游泳等有氧运动";
+        }
+
+        if($model->save()){
+            $response=array(
+                "ret"=>0,
+                "msg"=>"update success",
+                "info"=>array_merge($dietRes,$sportRes),
+                "advice_text"=>$advice_text,
+                "advice_goals"=>"",
+
+            );
+            Yii::$app->response->data = $response;
+            return ;
+        }else{
+            $response=array(
+                "ret"=>-2,
+                "msg"=>"update fail"
+            );
+            Yii::$app->response->data = $response;
+            return ;
+        }
     }
 
-    public function actionCard(){
-        $id = Yii::$app->user->identity->getId();
-        $url = Yii::$app->params["hostUrl"]."/site/login/in?id=".$id;
-        $filname = md5($id);
-        \app\components\QRcode::png($url, Yii::$app->params["imagePath"]."/$filname.png", 3, 50, 3,false);
-        $url = Yii::$app->params["hostUrl"]."/images/".$filname.".png";
-        return $this->render('code',["url"=>$url]);
-    }
+
 }
